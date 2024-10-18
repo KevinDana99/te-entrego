@@ -1,48 +1,57 @@
-import Table from "../Table";
-import { OrdersType } from "./types";
+import { Head, Table, Body, Th, Td, Container, Block } from "../Table/styled";
+import { ShipmentTableType } from "./types";
 
-const OrderTable = ({
-  headers,
-  data,
-}: {
-  headers: string[];
-  data: OrdersType;
-}) => {
+const ShipmentTable = ({ headers, data }: ShipmentTableType) => {
   return (
-    <Table headers={headers} data={data}/>
+    <Container>
+      <Block> </Block>
+      <Table>
+        <Head>
+          <tr>
+            {headers.map((head) => (
+              <Th>{head}</Th>
+            ))}
+          </tr>
+        </Head>
 
+        <Body>
+          {data?.map((element, index) => {
+            const active = index % 2 == 0 ? true : false;
+            return (
+              <>
+                <tr>
+                  <Td active={active}>{element?.operador}</Td>
+                  <Td active={active}>{element?.envio}</Td>
+                  <Td active={active}>{element?.fecha}</Td>
+                  <Td active={active}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        lineHeight: "18px",
+                        background: "#663399",
+                        color: "white",
+                        padding: "5px",
+                        borderRadius: "5px",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {element?.estado}
+                    </div>
+                  </Td>
+                  <Td active={active}>{element?.cuentaremitente}</Td>
+                  <Td active={active}>{element?.remitente}</Td>
+                  <Td active={active}>{element?.destino}</Td>
+                  <Td active={active}>{element?.destinatario}</Td>
+                  <Td active={active}>{element?.unidades}</Td>
+                  <Td active={active}>{element?.peso}kg</Td>
+                </tr>
+              </>
+            );
+          })}
+        </Body>
+      </Table>
+    </Container>
   );
 };
 
-export default OrderTable;
-/*
-  <table className="table table-dark">
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>client_id</th>
-          <th>shipment_id</th>
-          <th>shipment</th>
-          <th>bussiness</th>
-          <th>price</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {data?.map((element) => {
-          return (
-            <>
-              <tr className="table-active">
-                <td>{element?.id}</td>
-                <td>{element?.client_id}</td>
-                <td>{element?.shipment_id}</td>
-                <td>{element?.shipment}</td>
-                <td>{element?.bussiness}</td>
-                <td>{element?.price}</td>
-              </tr>
-            </>
-          );
-        })}
-      </tbody>
-    </table>
-  );*/
+export default ShipmentTable;
