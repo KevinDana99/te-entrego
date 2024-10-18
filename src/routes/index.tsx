@@ -1,9 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { RouterContext, RouterProvider } from "./context/RouterContext";
 import useRouter from "./context/hook/useRouter";
-import Orders from "../views/Orders";
 import { RoutesType } from "./types";
-import Shipments from "../views/Shipments";
 
 export const Router = ({ children }: { children: JSX.Element[] }) => {
   const { currentPath } = useContext(RouterContext);
@@ -37,7 +35,7 @@ const AppRouter = ({
   children,
   defaultPath,
 }: {
-  children?: JSX.Element;
+  children: JSX.Element;
   defaultPath: RoutesType;
 }) => {
   const [client, setClient] = useState(false);
@@ -52,20 +50,6 @@ const AppRouter = ({
       )
     );
   }
-  return (
-    client && (
-      <RouterProvider defaultPath={defaultPath}>
-        <Router>
-          <Route path="orders">
-            <Orders />
-          </Route>
-          <Route path="shipments">
-            <Shipments />
-          </Route>
-        </Router>
-      </RouterProvider>
-    )
-  );
 };
 
 export default AppRouter;
