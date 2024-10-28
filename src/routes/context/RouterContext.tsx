@@ -16,12 +16,9 @@ export const RouterProvider = ({
   defaultPath: RoutesType;
 }) => {
   const [currentPath, setCurrentPath] = useState(defaultPath);
-  const handleRouteNavigate = (path: RoutesType) => {
-    setCurrentPath(path);
-  };
 
   const navigate = (path: RoutesType) => {
-    handleRouteNavigate(path);
+    setCurrentPath(path);
   };
   return (
     <RouterContext.Provider value={{ currentPath, navigate }}>

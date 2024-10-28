@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const Container = styled.div`
-  width: 1200px;
-  max-height: 300px; /* Altura máxima del área con scroll */
+  width: 100%;
+  max-height: 500px; /* Altura máxima del área con scroll */
   overflow-y: auto;
   padding: 0px 0px 20px 15px;
   border: solid 1px #59b6e7;
@@ -27,7 +27,6 @@ export const Head = styled.thead`
   position: sticky;
   top: 15px;
   z-index: 1;
-
   background: #ffffff;
   color: #373737;
   font-size: 14px;

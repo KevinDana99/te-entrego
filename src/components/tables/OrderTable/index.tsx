@@ -1,3 +1,4 @@
+import { Link } from "../../../routes";
 import { Head, Table, Body, Container, Block, Th, Td } from "../Table/styled";
 import { OrderTableType } from "./types";
 
@@ -77,9 +78,11 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
                     </div>
                   </Td>
                   <Td active={active}>
-                    <button style={{ margin: 3, background: "#59b6e7" }}>
-                      Enviar Pedido
-                    </button>
+                    <Link path="shipment-method">
+                      <button style={{ margin: 3, background: "#59b6e7" }}>
+                        Enviar Pedido
+                      </button>
+                    </Link>
                   </Td>
                 </tr>
               </>

@@ -23,7 +23,7 @@ const useRequestHandle = ({
     try {
       const req = await fetch(destination);
       if (req.ok) {
-        const res: Response = await req.json();
+        // const res: Response = await req.json();
         setData(partialData);
       }
     } catch (err) {

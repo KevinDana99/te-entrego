@@ -1,3 +1,4 @@
+import { Link } from "../../../routes";
 import { Head, Table, Body, Th, Td, Container, Block } from "../Table/styled";
 import { ShipmentTableType } from "./types";
 
@@ -37,6 +38,17 @@ const ShipmentTable = ({ headers, data }: ShipmentTableType) => {
                     >
                       {element?.estado}
                     </div>
+                    <Link path="shipment-status">
+                      <button
+                        style={{
+                          margin: 3,
+                          background: "#59b6e7",
+                          outline: "none",
+                        }}
+                      >
+                        Ver estado del envio
+                      </button>
+                    </Link>
                   </Td>
                   <Td active={active}>{element?.cuentaremitente}</Td>
                   <Td active={active}>{element?.remitente}</Td>

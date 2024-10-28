@@ -23,12 +23,27 @@ export const Route = ({
 export const Link = ({
   path,
   children,
+  className,
+  action,
 }: {
   path: RoutesType;
   children: string | JSX.Element;
+  className?: string;
+  action?: () => void;
 }) => {
   const { navigate } = useRouter();
-  return <a onClick={() => navigate(path)}>{children}</a>;
+  return (
+    <a
+      className={className}
+      onClick={() => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        action && action();
+        navigate(path);
+      }}
+    >
+      {children}
+    </a>
+  );
 };
 
 const AppRouter = ({
