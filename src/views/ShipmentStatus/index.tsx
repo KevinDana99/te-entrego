@@ -44,10 +44,7 @@ const ShipmentStatus = () => {
           <DisabledShipmentStatus />
         </WrapperImg>
         <Status>entregado</Status>
-        <Detail>
-          <b>Estado:</b> <Status> entregado</Status>
-        </Detail>
-        24-04-2024
+        <Detail style={{ color: "#60789A" }}>Llego tu pedido</Detail>
       </Card>
     </Container>
   );
