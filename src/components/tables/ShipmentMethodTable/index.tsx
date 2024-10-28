@@ -6,7 +6,9 @@ import { OperatorContainer } from "./styled";
 import { ShipmentTableType } from "./types";
 const ShipmentMethodTable = ({ headers, data }: ShipmentTableType) => {
   const { handleSelectedMethod, selectedMethod } = useShipmentMethod(data);
-  const { navigate } = useRouter();
+  const { navigate, currentProps } = useRouter();
+
+  console.log(currentProps.shipmentId);
   return (
     <>
       <Container>

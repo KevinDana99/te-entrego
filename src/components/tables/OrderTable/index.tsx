@@ -78,7 +78,7 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
                     </div>
                   </Td>
                   <Td active={active}>
-                    <Link path="shipment-method">
+                    <Link path="shipment-method" shipmentId="232323">
                       <button style={{ margin: 3, background: "#59b6e7" }}>
                         Enviar Pedido
                       </button>

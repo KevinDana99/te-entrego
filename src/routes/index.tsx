@@ -20,25 +20,15 @@ export const Route = ({
   return children;
 };
 
-export const Link = ({
-  path,
-  children,
-  className,
-  action,
-}: {
-  path: RoutesType;
-  children: string | JSX.Element;
-  className?: string;
-  action?: () => void;
-}) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Link = (props: any) => {
+  const { path, className, children } = props;
   const { navigate } = useRouter();
   return (
     <a
       className={className}
       onClick={() => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        action && action();
-        navigate(path);
+        navigate(path, props);
       }}
     >
       {children}
