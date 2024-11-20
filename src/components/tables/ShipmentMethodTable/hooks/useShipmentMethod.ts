@@ -40,7 +40,7 @@ const useShipmentMethod = (
   );
 
   console.log({ handleGetOriginLocation });
-
+  console.log({ handleGetOriginLocation });
   /*
 
   const handleGetDestinationLocation = useFetch(
