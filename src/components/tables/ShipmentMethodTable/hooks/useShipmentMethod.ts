@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ShipmentTableType } from "../types";
-//import useFetch from "../../../../hooks/useFetch";
+import useFetch from "../../../../hooks/useFetch";
 import { WoocomerceOrderType } from "../../OrderTable/types";
 //import { LocationResponseType } from "./types";
 import { ConfigType } from "../../../../views/Config/hooks/useConfig";
@@ -20,15 +20,15 @@ const useShipmentMethod = (
     return getPosition;
   };
   console.log({ currentProps });
-  //const order = currentProps.order;
-  //const city = order.customer.city;
+  const order = currentProps.order;
+  const city = order.customer.city;
   const [selectedMethod, setSelectedMethod] = useState<number | null>(
     handleLoadConfig()
   );
   const handleSelectedMethod = (index: number) => {
     setSelectedMethod(index);
   };
-  /*
+
   const handleGetOriginLocation = useFetch(
     "https://te-entrego.com/teadmin_beta/public/api/ciudades",
     {
@@ -38,6 +38,10 @@ const useShipmentMethod = (
       paramb: city,
     }
   );
+
+  console.log({ handleGetOriginLocation });
+
+  /*
 
   const handleGetDestinationLocation = useFetch(
     "https://te-entrego.com/teadmin_beta/public/api/ciudades",
