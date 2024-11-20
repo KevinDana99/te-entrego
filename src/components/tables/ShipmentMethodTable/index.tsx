@@ -33,7 +33,7 @@ const ShipmentMethodTable = ({
               customOrder={customOrder}
             />
           ) : (
-            <>orden no definida</>
+            <>orden no definida </>
           )}
         </Table>
       </Container>
