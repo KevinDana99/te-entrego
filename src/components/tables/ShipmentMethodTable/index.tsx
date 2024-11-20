@@ -13,7 +13,7 @@ const ShipmentMethodTable = ({
   const { navigate, currentProps } = useRouter();
   const { handleSelectedMethod, selectedMethod, customOrder } =
     useShipmentMethod(dataProp, currentProps);
-  console.log({ customOrder, currentProps });
+  console.log({ customOrder });
   return (
     <>
       <Container>
@@ -26,12 +26,14 @@ const ShipmentMethodTable = ({
               ))}
             </tr>
           </Head>
-          {customOrder && (
+          {customOrder ? (
             <CotizationDetail
               handleSelectedMethod={handleSelectedMethod}
               selectedMethod={selectedMethod}
               customOrder={customOrder}
             />
+          ) : (
+            <>orden no definida</>
           )}
         </Table>
       </Container>
