@@ -4,6 +4,7 @@ import useFetch from "../../../../hooks/useFetch";
 import { WoocomerceOrderType } from "../../OrderTable/types";
 //import { LocationResponseType } from "./types";
 import { ConfigType } from "../../../../views/Config/hooks/useConfig";
+import { LocationResponseType } from "./types";
 
 const useShipmentMethod = (
   dataProp: ShipmentTableType["data"],
@@ -39,8 +40,6 @@ const useShipmentMethod = (
     }
   );
 
-  console.log({ handleGetOriginLocation });
-  console.log({ handleGetOriginLocation });
   /*
 
   const handleGetDestinationLocation = useFetch(
@@ -52,10 +51,10 @@ const useShipmentMethod = (
       paramb: city,
     }
   );
-
-  const originLocation: LocationResponseType = handleGetOriginLocation.data;
-  const destinationLocation: LocationResponseType =
-    handleGetDestinationLocation.data;
+  */
+  const originLocation = handleGetOriginLocation.data as LocationResponseType;
+  /*const destinationLocation: LocationResponseType =
+    handleGetDestinationLocation.data;*/
 
   const handleGetSizesProducts = () => {
     const result = order?.products?.reduce(
@@ -88,7 +87,7 @@ const useShipmentMethod = (
     "https://te-entrego.com/teadmin_beta/public/api/calcular_envio",
     {
       origen: originLocation.lista[0].codigodanelargo,
-      destino: destinationLocation.lista[0].codigodanelargo,
+      destino: originLocation.lista[0].codigodanelargo,
       unidades: order.line_items[0].fulfillable_quantity,
       kilos: weight,
       ancho: width,
@@ -106,7 +105,7 @@ const useShipmentMethod = (
   );
 
   console.log(data, loading, error);
-*/
+
   return { selectedMethod, handleSelectedMethod };
 };
 
