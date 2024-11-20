@@ -1,14 +1,29 @@
-const Logo = () => {
+const Logo = ({ size = 121 }: { size?: number }) => {
+  function calculateHeight(
+    width: number,
+    aspectRatioWidth: number,
+    aspectRatioHeight: number
+  ) {
+    // Calcular la altura usando la regla de tres
+    const height = (width * aspectRatioHeight) / aspectRatioWidth;
+    return height;
+  }
+
+  // Ejemplo de uso
+  const width = size; // Ancho del input
+  const aspectRatioWidth = 121; // Parte del ancho de la relación de aspecto
+  const aspectRatioHeight = 47; // Parte de la altura de la relación de aspecto
+  const height = calculateHeight(width, aspectRatioWidth, aspectRatioHeight);
   return (
     <svg
-      width="121"
-      height="47"
-      viewBox="0 0 121 47"
+      width={size}
+      height={height}
+      viewBox={`0 0 ${size} ${height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <rect width="121" height="47" fill="url(#pattern0_91_1128)" />
+      <rect width={width} height={height} fill="url(#pattern0_91_1128)" />
       <defs>
         <pattern
           id="pattern0_91_1128"

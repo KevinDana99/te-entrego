@@ -1,8 +1,9 @@
+import React from "react";
 import { Link } from "../../../routes";
 import { Head, Table, Body, Th, Td, Container, Block } from "../Table/styled";
 import { ShipmentTableType } from "./types";
 
-const ShipmentTable = ({ headers, data }: ShipmentTableType) => {
+const ShipmentTable = React.memo(({ headers, data }: ShipmentTableType) => {
   return (
     <Container>
       <Block> </Block>
@@ -38,7 +39,7 @@ const ShipmentTable = ({ headers, data }: ShipmentTableType) => {
                     >
                       {element?.estado}
                     </div>
-                    <Link path="shipment-status">
+                    <Link path="shipment-status" shipmentData={data[index]}>
                       <button
                         style={{
                           margin: 3,
@@ -64,6 +65,6 @@ const ShipmentTable = ({ headers, data }: ShipmentTableType) => {
       </Table>
     </Container>
   );
-};
+});
 
 export default ShipmentTable;

@@ -42,6 +42,24 @@ const Config = () => {
         </InputWrapper>
       </InputContainer>
       <InputContainer>
+        <InputLabel>Codigo de cliente: </InputLabel>
+        <InputWrapper>
+          <Input
+            type="text"
+            onChange={(e) =>
+              handleOnChangeConfig({ client_code: e.target.value })
+            }
+            value={config.client_code}
+          />
+          <Icon>
+            <MdOutlineContentPaste
+              size={20}
+              onClick={() => handleCopyTextInput("client_code")}
+            />
+          </Icon>
+        </InputWrapper>
+      </InputContainer>
+      <InputContainer>
         <InputLabel>Clave te-Entrego: </InputLabel>
         <InputWrapper>
           <Input

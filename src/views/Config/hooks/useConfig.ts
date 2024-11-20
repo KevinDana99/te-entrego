@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
-type ConfigType = {
+export type ConfigType = {
   operator: string;
   public_key: string;
   secret_key: string;
   platform_secret_key: string;
   platform_public_key: string;
+  client_code: string;
 };
 
 const DEFAULT_CONFIG = {
@@ -14,6 +15,7 @@ const DEFAULT_CONFIG = {
   secret_key: "",
   platform_public_key: "",
   platform_secret_key: "",
+  client_code: "",
 };
 
 const useConfig = () => {

@@ -5,19 +5,24 @@ import Sidebar from "../components/layouts/Sidebar";
 import Views from "../views";
 import Layout from "../Layout";
 import Login from "../views/Login";
+import useConfig from "../views/Config/hooks/useConfig";
+import { ShopNameType } from "../hooks/usePolling/types";
 
-const Wrapper = () => {
+const Wrapper = ({ shopName }: { shopName: ShopNameType }) => {
+  useConfig();
   const [show, setShow] = useState(false);
   useEffect(() => {
     setShow(true);
   }, []);
 
-  const auth = true;
-
+  const [auth, setAuth] = useState(true);
+  const handleLogin = () => {
+    setAuth(true);
+  };
   if (!auth) {
     return (
       <>
-        <Login />
+        <Login onLogin={handleLogin} />
       </>
     );
   } else {
@@ -27,7 +32,7 @@ const Wrapper = () => {
           <AppRouter defaultPath="shipments">
             <Layout>
               <Sidebar />
-              <Views />
+              <Views shopName={shopName} />
             </Layout>
           </AppRouter>
         </Container>

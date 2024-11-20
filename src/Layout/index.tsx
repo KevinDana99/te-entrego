@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "./styled";
 
 const Layout = ({ children }: { children: JSX.Element[] }) => {

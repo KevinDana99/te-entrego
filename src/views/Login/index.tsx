@@ -18,7 +18,7 @@ const DynamicCSSLoader = ({ cssFile }: { cssFile: string }) => {
   return null;
 };
 
-const Login = () => {
+const Login = ({ onLogin }: { onLogin: () => void }) => {
   return (
     <>
       <DynamicCSSLoader cssFile={"./styles.css"} />
@@ -103,7 +103,10 @@ const Login = () => {
                     </div>
                     <div className="row mt-3 justify-content-center">
                       <div className="col-md-12">
-                        <button className="btn btn-info pl-5 pr-5 font-weight-bold">
+                        <button
+                          onClick={onLogin}
+                          className="btn btn-info pl-5 pr-5 font-weight-bold m-2"
+                        >
                           Ingresar
                         </button>
                         <a

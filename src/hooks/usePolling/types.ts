@@ -6,7 +6,5 @@ export type EndpointType = string;
 
 export type UsePollingType = {
   time: number;
-  initial: EndpointType;
-  destination: EndpointType;
   shopName: ShopNameType;
 };

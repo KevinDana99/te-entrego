@@ -2,7 +2,7 @@ import "./App.css";
 import Wrapper from "./wrapper/index";
 
 function App() {
-  return <Wrapper />;
+  return <Wrapper shopName="woocommerce" />;
 }
 
 export default App;

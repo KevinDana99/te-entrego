@@ -8,21 +8,23 @@ import Config from "./Config";
 import useViews from "./hooks/useViews";
 import ShipmentStatus from "./ShipmentStatus";
 import ShipmentMethod from "./ShipmentMethod";
+import { ShopNameType } from "../hooks/usePolling/types";
 
-const Views = () => {
-  const { path } = useViews();
+const Views = ({ shopName }: { shopName: ShopNameType }) => {
+  const { path, shipmentData } = useViews();
+
   return (
     <Container>
-      <Title> {path}</Title>
+      <Title>{path}</Title>
       <LogoContainer>
-        <Logo />
+        <Logo size={121} />
       </LogoContainer>
       <Router>
         <Route path="orders">
-          <Orders />
+          <Orders shopName={shopName} />
         </Route>
         <Route path="shipments">
-          <Shipments />
+          <Shipments shipmentData={shipmentData} />
         </Route>
         <Route path="shipment-method">
           <ShipmentMethod />

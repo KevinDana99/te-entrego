@@ -4,11 +4,17 @@ import { Head, Table, Body, Th, Td, Container, Block } from "../Table/styled";
 import useShipmentMethod from "./hooks/useShipmentMethod";
 import { OperatorContainer } from "./styled";
 import { ShipmentTableType } from "./types";
-const ShipmentMethodTable = ({ headers, data }: ShipmentTableType) => {
-  const { handleSelectedMethod, selectedMethod } = useShipmentMethod(data);
-  const { navigate, currentProps } = useRouter();
 
-  console.log(currentProps.shipmentId);
+const ShipmentMethodTable = ({
+  headers,
+  data: dataProp,
+}: ShipmentTableType) => {
+  const { navigate, currentProps } = useRouter();
+  const { handleSelectedMethod, selectedMethod } = useShipmentMethod(
+    dataProp,
+    currentProps
+  );
+
   return (
     <>
       <Container>
@@ -23,7 +29,7 @@ const ShipmentMethodTable = ({ headers, data }: ShipmentTableType) => {
           </Head>
 
           <Body>
-            {data?.map((element, index) => {
+            {dataProp?.map((element, index) => {
               const active = index % 2 == 0 ? true : false;
               return (
                 <>
@@ -31,7 +37,7 @@ const ShipmentMethodTable = ({ headers, data }: ShipmentTableType) => {
                     <Td active={active}>
                       <OperatorContainer>
                         {element.img ? (
-                          <img width={100} src={element.img}></img>
+                          <img width={100} src={element.img} />
                         ) : (
                           <Logo />
                         )}
