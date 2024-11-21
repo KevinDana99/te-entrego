@@ -1,7 +1,6 @@
 import useRouter from "../../../routes/context/hook/useRouter";
 import Logo from "../../assets/Logo";
 import { Head, Table, Th, Container, Block, Body, Td } from "../Table/styled";
-import CotizationDetail from "./CotizationDetail";
 import useShipmentMethod from "./hooks/useShipmentMethod";
 import { OperatorContainer } from "./styled";
 
@@ -14,7 +13,7 @@ const ShipmentMethodTable = ({
   const { navigate, currentProps } = useRouter();
   const { handleSelectedMethod, selectedMethod, customOrder } =
     useShipmentMethod(dataProp, currentProps);
-  console.log({ customOrder, dataProp });
+  console.log({ customOrder });
   return (
     <>
       <Container>
@@ -27,61 +26,54 @@ const ShipmentMethodTable = ({
               ))}
             </tr>
           </Head>
-          {customOrder ? (
-            <CotizationDetail
-              handleSelectedMethod={handleSelectedMethod}
-              selectedMethod={selectedMethod}
-              customOrder={customOrder}
-            />
-          ) : (
-            <Body>
-              {dataProp?.map((element, index) => {
-                const active = index % 2 == 0 ? true : false;
-                return (
-                  <>
-                    <tr>
-                      <Td active={active}>
-                        <OperatorContainer>
-                          {element.img ? (
-                            <img width={100} src={element.img} />
-                          ) : (
-                            <Logo />
-                          )}
-                        </OperatorContainer>
-                      </Td>
-                      <Td active={active}>{element?.price}</Td>
-                      <Td active={active}>
-                        {index === selectedMethod ? (
-                          <button
-                            style={{
-                              margin: 3,
-                              background: "#ffffff",
-                              color: "#59b6e7",
-                              border: "2px solid #59b6e7",
-                              outline: "none",
-                            }}
-                          >
-                            Seleccionado
-                          </button>
+
+          <Body>
+            {dataProp?.map((element, index) => {
+              const active = index % 2 == 0 ? true : false;
+              return (
+                <>
+                  <tr>
+                    <Td active={active}>
+                      <OperatorContainer>
+                        {element.img ? (
+                          <img width={100} src={element.img} />
                         ) : (
-                          <button
-                            style={{
-                              margin: 3,
-                              background: "#59b6e7",
-                              outline: "none",
-                            }}
-                            onClick={() => handleSelectedMethod(index)}
-                          >
-                            Seleccionar
-                          </button>
+                          <Logo />
                         )}
-                      </Td>
-                    </tr>
-                  </>
-                );
-              })}
-            </Body>
-          )}
+                      </OperatorContainer>
+                    </Td>
+                    <Td active={active}>{element?.price}</Td>
+                    <Td active={active}>
+                      {index === selectedMethod ? (
+                        <button
+                          style={{
+                            margin: 3,
+                            background: "#ffffff",
+                            color: "#59b6e7",
+                            border: "2px solid #59b6e7",
+                            outline: "none",
+                          }}
+                        >
+                          Seleccionado
+                        </button>
+                      ) : (
+                        <button
+                          style={{
+                            margin: 3,
+                            background: "#59b6e7",
+                            outline: "none",
+                          }}
+                          onClick={() => handleSelectedMethod(index)}
+                        >
+                          Seleccionar
+                        </button>
+                      )}
+                    </Td>
+                  </tr>
+                </>
+              );
+            })}
+          </Body>
         </Table>
       </Container>
 
