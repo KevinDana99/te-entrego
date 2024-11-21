@@ -81,7 +81,7 @@ const useShipmentMethod = (
   const { height, length, weight, width } = handleGetSizesProducts();
 
   useEffect(() => {
-    if (originLocation && destinationLocation) {
+    if (originLocation.length !== 0 && destinationLocation.length !== 0) {
       setCustomOrder({
         origen: originLocation[0].codigodanelargo,
         destino: destinationLocation[0].codigodanelargo,

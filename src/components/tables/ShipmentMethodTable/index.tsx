@@ -13,7 +13,7 @@ const ShipmentMethodTable = ({
   const { handleSelectedMethod, selectedMethod, customOrder } =
     useShipmentMethod(dataProp, currentProps);
 
-  console.log(customOrder);
+  console.log({ customOrder });
 
   return (
     <>
