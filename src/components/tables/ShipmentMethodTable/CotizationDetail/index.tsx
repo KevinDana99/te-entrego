@@ -48,7 +48,11 @@ const CotizationDetail = ({
               </Td>
               <Td active={active}>
                 <div>Flete total: ${element?.resultados.total}</div>
-                <div>{element?.resultados.adicionales}</div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `${element?.resultados.adicionales}`,
+                  }}
+                ></div>
               </Td>
               <Td active={active}>
                 {index === selectedMethod ? (
