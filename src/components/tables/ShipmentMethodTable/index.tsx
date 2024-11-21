@@ -1,9 +1,8 @@
 import useRouter from "../../../routes/context/hook/useRouter";
 import Logo from "../../assets/Logo";
-import { Head, Table, Th, Container, Block, Body, Td } from "../Table/styled";
+import { Head, Table, Body, Th, Td, Container, Block } from "../Table/styled";
 import useShipmentMethod from "./hooks/useShipmentMethod";
 import { OperatorContainer } from "./styled";
-
 import { ShipmentTableType } from "./types";
 
 const ShipmentMethodTable = ({
@@ -11,9 +10,11 @@ const ShipmentMethodTable = ({
   data: dataProp,
 }: ShipmentTableType) => {
   const { navigate, currentProps } = useRouter();
-  const { handleSelectedMethod, selectedMethod, customOrder } =
-    useShipmentMethod(dataProp, currentProps);
-  console.log({ customOrder });
+  const { handleSelectedMethod, selectedMethod } = useShipmentMethod(
+    dataProp,
+    currentProps
+  );
+
   return (
     <>
       <Container>
