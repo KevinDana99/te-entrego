@@ -1,12 +1,13 @@
-//import { Body, Td } from "../../Table/styled";
-//import { ShipmentTableType } from "../types";
-//import Logo from "../../../assets/Logo";
-//import { OperatorContainer } from "../styled";
+import { Body, Td } from "../../Table/styled";
+import Logo from "../../../assets/Logo";
+import { OperatorContainer } from "../styled";
 import { CustomOrderType } from "../hooks/types";
 import useFetch from "../../../../hooks/useFetch";
 import { CotizationResponseType } from "./types";
 const CotizationDetail = ({
   customOrder,
+  handleSelectedMethod,
+  selectedMethod,
 }: {
   selectedMethod: number | null;
   handleSelectedMethod: (index: number) => void;
@@ -26,14 +27,10 @@ const CotizationDetail = ({
     return <>error {console.log(error)}</>;
   }
 
-  const cotizationData = data.lista as CotizationResponseType;
+  const cotizationData = data as CotizationResponseType;
 
   console.log({ cotizationData, data });
-  return <></>;
-};
-
-export default CotizationDetail;
-/*
+  return (
     <Body>
       {cotizationData?.map((element, index) => {
         const active = index % 2 == 0 ? true : false;
@@ -42,14 +39,14 @@ export default CotizationDetail;
             <tr>
               <Td active={active}>
                 <OperatorContainer>
-                  {element.img ? (
-                    <img width={100} src={element.img} />
+                  {element.logo ? (
+                    <img width={100} src={element.logo} />
                   ) : (
                     <Logo />
                   )}
                 </OperatorContainer>
               </Td>
-              <Td active={active}>{element?.price}</Td>
+              <Td active={active}>{element?.resultados[0].total}</Td>
               <Td active={active}>
                 {index === selectedMethod ? (
                   <button
@@ -81,4 +78,7 @@ export default CotizationDetail;
         );
       })}
     </Body>
-    */
+  );
+};
+
+export default CotizationDetail;
