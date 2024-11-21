@@ -94,7 +94,7 @@ const useShipmentMethod = (
         vlrecaudo: order.sub_total_price,
         dest_flete: 0,
         dest_comision: 0,
-        operador: config.operator,
+        operador: "",
         codigocliente: config.client_code,
         accesoapi: config.public_key,
         llaveseguridad: config.secret_key,
