@@ -81,25 +81,26 @@ const useShipmentMethod = (
   const { height, length, weight, width } = handleGetSizesProducts();
 
   useEffect(() => {
-    setCustomOrder({
-      origen: originLocation.lista[0].codigodanelargo,
-      destino: originLocation.lista[0].codigodanelargo,
-      unidades: order.line_items[0].fulfillable_quantity,
-      kilos: weight || 0,
-      ancho: width || 0,
-      alto: height || 0,
-      largo: length || 0,
-      vlrdeclarado: order.total_price,
-      vlrecaudo: order.sub_total_price,
-      dest_flete: 0,
-      dest_comision: 0,
-      operador: config.operator,
-      codigocliente: config.client_code,
-      accesoapi: config.public_key,
-      llaveseguridad: config.secret_key,
-    });
-
-    console.log({ originLocation, destinationLocation, order });
+    if (originLocation && destinationLocation) {
+      setCustomOrder({
+        origen: originLocation.lista[0].codigodanelargo,
+        destino: originLocation.lista[0].codigodanelargo,
+        unidades: order.line_items[0].fulfillable_quantity,
+        kilos: weight || 0,
+        ancho: width || 0,
+        alto: height || 0,
+        largo: length || 0,
+        vlrdeclarado: order.total_price,
+        vlrecaudo: order.sub_total_price,
+        dest_flete: 0,
+        dest_comision: 0,
+        operador: config.operator,
+        codigocliente: config.client_code,
+        accesoapi: config.public_key,
+        llaveseguridad: config.secret_key,
+      });
+      console.log({ originLocation, destinationLocation, order });
+    }
   }, [originLocation, destinationLocation]);
 
   return { selectedMethod, customOrder, handleSelectedMethod };
