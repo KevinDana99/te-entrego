@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ShipmentTableType } from "../types";
 import useFetch from "../../../../hooks/useFetch";
 import { WoocomerceOrderType } from "../../OrderTable/types";
 import { ConfigType } from "../../../../views/Config/hooks/useConfig";
-import { CustomOrderType, LocationResponseType } from "./types";
+import { LocationResponseType } from "./types";
 
 const useShipmentMethod = (
   dataProp: ShipmentTableType["data"],
@@ -28,7 +28,7 @@ const useShipmentMethod = (
     setSelectedMethod(index);
   };
 
-  const [customOrder, setCustomOrder] = useState<CustomOrderType | null>(null);
+  //const [customOrder, setCustomOrder] = useState<CustomOrderType | null>(null);
 
   const handleGetOriginLocation = useFetch(
     "https://te-entrego.com/teadmin_beta/public/api/ciudades",
@@ -40,6 +40,10 @@ const useShipmentMethod = (
     }
   );
 
+  const originLocation = handleGetOriginLocation.data as LocationResponseType;
+  console.log({ originLocation });
+
+  /*
   const handleGetDestinationLocation = useFetch(
     "https://te-entrego.com/teadmin_beta/public/api/ciudades",
     {
@@ -49,8 +53,6 @@ const useShipmentMethod = (
       paramb: city,
     }
   );
-
-  const originLocation = handleGetOriginLocation.data as LocationResponseType;
 
   const destinationLocation =
     handleGetDestinationLocation.data as LocationResponseType;
@@ -101,8 +103,8 @@ const useShipmentMethod = (
       llaveseguridad: config.secret_key,
     });
   }, [height, length, weight, width, destinationLocation, originLocation]);
-
-  return { selectedMethod, handleSelectedMethod, customOrder };
+*/
+  return { selectedMethod, handleSelectedMethod };
 };
 
 export default useShipmentMethod;
