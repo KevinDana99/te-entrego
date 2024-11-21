@@ -82,7 +82,6 @@ const useShipmentMethod = (
 
   useEffect(() => {
     if (originLocation.length !== 0 && destinationLocation.length !== 0) {
-      console.log({ originLocation });
       setCustomOrder({
         origen: originLocation[0].codigodanelargo,
         destino: destinationLocation[0].codigodanelargo,

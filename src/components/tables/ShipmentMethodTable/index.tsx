@@ -1,8 +1,7 @@
 import useRouter from "../../../routes/context/hook/useRouter";
-import Logo from "../../assets/Logo";
-import { Head, Table, Body, Th, Td, Container, Block } from "../Table/styled";
+import { Head, Table, Th, Container, Block } from "../Table/styled";
+import CotizationDetail from "./CotizationDetail";
 import useShipmentMethod from "./hooks/useShipmentMethod";
-import { OperatorContainer } from "./styled";
 import { ShipmentTableType } from "./types";
 
 const ShipmentMethodTable = ({
@@ -12,9 +11,6 @@ const ShipmentMethodTable = ({
   const { navigate, currentProps } = useRouter();
   const { handleSelectedMethod, selectedMethod, customOrder } =
     useShipmentMethod(dataProp, currentProps);
-
-  console.log({ customOrder });
-
   return (
     <>
       <Container>
@@ -27,54 +23,13 @@ const ShipmentMethodTable = ({
               ))}
             </tr>
           </Head>
-
-          <Body>
-            {dataProp?.map((element, index) => {
-              const active = index % 2 == 0 ? true : false;
-              return (
-                <>
-                  <tr>
-                    <Td active={active}>
-                      <OperatorContainer>
-                        {element.img ? (
-                          <img width={100} src={element.img} />
-                        ) : (
-                          <Logo />
-                        )}
-                      </OperatorContainer>
-                    </Td>
-                    <Td active={active}>{element?.price}</Td>
-                    <Td active={active}>
-                      {index === selectedMethod ? (
-                        <button
-                          style={{
-                            margin: 3,
-                            background: "#ffffff",
-                            color: "#59b6e7",
-                            border: "2px solid #59b6e7",
-                            outline: "none",
-                          }}
-                        >
-                          Seleccionado
-                        </button>
-                      ) : (
-                        <button
-                          style={{
-                            margin: 3,
-                            background: "#59b6e7",
-                            outline: "none",
-                          }}
-                          onClick={() => handleSelectedMethod(index)}
-                        >
-                          Seleccionar
-                        </button>
-                      )}
-                    </Td>
-                  </tr>
-                </>
-              );
-            })}
-          </Body>
+          {customOrder && (
+            <CotizationDetail
+              customOrder={customOrder}
+              handleSelectedMethod={handleSelectedMethod}
+              selectedMethod={selectedMethod}
+            />
+          )}
         </Table>
       </Container>
 
