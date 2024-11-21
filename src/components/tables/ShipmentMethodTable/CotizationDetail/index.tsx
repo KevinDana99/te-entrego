@@ -28,7 +28,7 @@ const CotizationDetail = ({
 
   const cotizationData = data.lista as CotizationResponseType;
 
-  console.log({ cotizationData });
+  console.log({ cotizationData, data });
   return <></>;
 };
 
