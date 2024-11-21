@@ -21,5 +21,5 @@ export type CotizationResponseType = {
     valor_com_fran: number;
     btn: string;
     xml: string;
-  }[];
+  };
 }[];

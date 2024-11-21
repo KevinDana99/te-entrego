@@ -46,7 +46,7 @@ const CotizationDetail = ({
                   )}
                 </OperatorContainer>
               </Td>
-              <Td active={active}>{element?.resultados[0].total}</Td>
+              <Td active={active}>{element?.resultados.total}</Td>
               <Td active={active}>
                 {index === selectedMethod ? (
                   <button
