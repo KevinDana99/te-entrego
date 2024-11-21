@@ -1,15 +1,8 @@
 export type LocationResponseType = {
-  respuesta: string;
-  mensaje: string;
-  lista: [
-    {
-      codigodanelargo: string;
-      poblacion: string;
-      municipio: string;
-    }
-  ];
-  token: string;
-};
+  codigodanelargo: string;
+  poblacion: string;
+  municipio: string;
+}[];
 
 export type CustomOrderType = {
   origen: string;

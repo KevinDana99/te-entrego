@@ -3,7 +3,7 @@ import { ShipmentTableType } from "../types";
 import useFetch from "../../../../hooks/useFetch";
 import { WoocomerceOrderType } from "../../OrderTable/types";
 import { ConfigType } from "../../../../views/Config/hooks/useConfig";
-import { LocationResponseType } from "./types";
+import { CustomOrderType, LocationResponseType } from "./types";
 
 const useShipmentMethod = (
   dataProp: ShipmentTableType["data"],
@@ -28,7 +28,7 @@ const useShipmentMethod = (
     setSelectedMethod(index);
   };
 
-  // const [customOrder, setCustomOrder] = useState<CustomOrderType | null>(null);
+  const [customOrder, setCustomOrder] = useState<CustomOrderType | null>(null);
 
   const handleGetOriginLocation = useFetch(
     "https://te-entrego.com/teadmin_beta/public/api/ciudades",
@@ -82,27 +82,9 @@ const useShipmentMethod = (
 
   useEffect(() => {
     if (originLocation && destinationLocation) {
-      console.log({
-        originLocation,
-        destinationLocation,
-        order,
-        height,
-        length,
-        weight,
-        width,
-      });
-    }
-  }, [originLocation, destinationLocation]);
-
-  return { selectedMethod, handleSelectedMethod };
-};
-
-export default useShipmentMethod;
-/*
-
       setCustomOrder({
-        origen: originLocation.lista[0].codigodanelargo,
-        destino: originLocation.lista[0].codigodanelargo,
+        origen: originLocation[0].codigodanelargo,
+        destino: destinationLocation[0].codigodanelargo,
         unidades: order.line_items[0].fulfillable_quantity,
         kilos: weight || 0,
         ancho: width || 0,
@@ -117,5 +99,10 @@ export default useShipmentMethod;
         accesoapi: config.public_key,
         llaveseguridad: config.secret_key,
       });
+    }
+  }, [originLocation, destinationLocation]);
 
-      */
+  return { selectedMethod, customOrder, handleSelectedMethod };
+};
+
+export default useShipmentMethod;
