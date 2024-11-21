@@ -41,7 +41,7 @@ const useShipmentMethod = (
   );
 
   const originLocation = handleGetOriginLocation.data as LocationResponseType;
-  console.log({ originLocation });
+  console.log({ originLocation, order });
 
   /*
   const handleGetDestinationLocation = useFetch(
@@ -53,10 +53,11 @@ const useShipmentMethod = (
       paramb: city,
     }
   );
-
   const destinationLocation =
     handleGetDestinationLocation.data as LocationResponseType;
 
+*/
+  /*
   const handleGetSizesProducts = () => {
     const result = order?.products?.reduce(
       (accumulator, product) => {
