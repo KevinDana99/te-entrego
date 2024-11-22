@@ -13,6 +13,7 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
       const order: WoocomerceOrderType = {
         name: item.id,
         created_at: item.date_created,
+        seller: item.store,
         customer: {
           first_name: item.billing.first_name,
           last_name: item.billing.last_name,

@@ -22,11 +22,22 @@ export type WoocomerceOrderType = {
     address_1: string;
     address_2: string;
   };
+  seller: {
+    shop_name: string;
+    address_1: string;
+    address_2: string;
+    city: string;
+    state: string;
+    postcode?: string;
+    country: string;
+    email: string;
+    phone: string;
+  };
   sub_total_price: number;
   total_price: string;
   financial_status: string;
   fulfillment_status: string;
-  fulfillable_quantity: string;
+  fulfillable_quantity: number;
   line_items: [
     {
       fulfillable_quantity: number;
