@@ -1,4 +1,4 @@
-export type CotizationResponseType = {
+export type CotizationResponseItemType = {
   codigo: string;
   nombre: string;
   logo: string;
@@ -22,4 +22,6 @@ export type CotizationResponseType = {
     btn: string;
     xml: string;
   };
-}[];
+};
+
+export type CotizationResponseType = CotizationResponseItemType[];

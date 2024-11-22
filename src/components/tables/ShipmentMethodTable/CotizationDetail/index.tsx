@@ -1,24 +1,23 @@
 import { Body, Td } from "../../Table/styled";
 import Logo from "../../../assets/Logo";
 import { OperatorContainer } from "../styled";
-import { CustomOrderType } from "../hooks/types";
-import useFetch from "../../../../hooks/useFetch";
+import { CustomOrderType, CustomShipmentOrderType } from "../hooks/types";
 import { CotizationResponseType } from "./types";
+import useCotizationDetail from "./hooks/useCotizationDetail";
 const CotizationDetail = ({
   customOrder,
   handleSelectedMethod,
   selectedMethod,
 }: {
   selectedMethod: number | null;
-  handleSelectedMethod: (index: number) => void;
+  handleSelectedMethod: (
+    index: number,
+    currentOrder: CustomShipmentOrderType
+  ) => void;
   customOrder: CustomOrderType;
 }) => {
-  const { loading, data, error } = useFetch(
-    "https://te-entrego.com/teadmin_beta/public/api/calcular_envio",
-    {
-      ...customOrder,
-    }
-  );
+  const { data, error, loading, handleCreateShipmentOrder } =
+    useCotizationDetail(customOrder, handleSelectedMethod);
 
   if (loading) {
     return <>cargando...</>;
@@ -29,7 +28,6 @@ const CotizationDetail = ({
 
   const cotizationData = data as CotizationResponseType;
 
-  console.log({ cotizationData, data });
   return (
     <Body>
       {cotizationData?.map((element, index) => {
@@ -74,7 +72,7 @@ const CotizationDetail = ({
                       background: "#59b6e7",
                       outline: "none",
                     }}
-                    onClick={() => handleSelectedMethod(index)}
+                    onClick={() => handleCreateShipmentOrder(index, element)}
                   >
                     Seleccionar
                   </button>

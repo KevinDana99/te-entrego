@@ -3,7 +3,11 @@ import { ShipmentTableType } from "../types";
 import useFetch from "../../../../hooks/useFetch";
 import { WoocomerceOrderType } from "../../OrderTable/types";
 import { ConfigType } from "../../../../views/Config/hooks/useConfig";
-import { CustomOrderType, LocationResponseType } from "./types";
+import {
+  CustomOrderType,
+  CustomShipmentOrderType,
+  LocationResponseType,
+} from "./types";
 
 const useShipmentMethod = (
   dataProp: ShipmentTableType["data"],
@@ -24,10 +28,16 @@ const useShipmentMethod = (
   const [selectedMethod, setSelectedMethod] = useState<number | null>(
     handleLoadConfig()
   );
-  const handleSelectedMethod = (index: number) => {
-    setSelectedMethod(index);
-  };
+  const [shipmentOrder, setShipmentOrder] =
+    useState<CustomShipmentOrderType | null>(null);
 
+  const handleSelectedMethod = (
+    index: number,
+    currentOrder: CustomShipmentOrderType
+  ) => {
+    setSelectedMethod(index);
+    setShipmentOrder(currentOrder);
+  };
   const [customOrder, setCustomOrder] = useState<CustomOrderType | null>(null);
 
   const handleGetOriginLocation = useFetch(
@@ -102,7 +112,7 @@ const useShipmentMethod = (
     }
   }, [originLocation, destinationLocation]);
 
-  return { selectedMethod, customOrder, handleSelectedMethod };
+  return { selectedMethod, shipmentOrder, customOrder, handleSelectedMethod };
 };
 
 export default useShipmentMethod;
