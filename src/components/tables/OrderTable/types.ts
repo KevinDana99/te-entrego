@@ -14,6 +14,13 @@ export type WoocomerceOrderType = {
     first_name: string;
     last_name: string;
     city: string;
+    country: string;
+    email: string;
+    phone: string;
+    postcode: string;
+    state: string;
+    address_1: string;
+    address_2: string;
   };
   sub_total_price: number;
   total_price: string;

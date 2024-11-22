@@ -17,6 +17,13 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
           first_name: item.billing.first_name,
           last_name: item.billing.last_name,
           city: item.billing.city,
+          country: item.billing.country,
+          email: item.billing.email,
+          phone: item.billing.phone,
+          postcode: item.billing.postcode,
+          state: item.billing.state,
+          address_1: item.billing.address_1,
+          address_2: item.billing.address_2,
         },
         total_price: item.total,
         sub_total_price: item.subtotal,
@@ -36,7 +43,7 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
     return orders;
   };
 
-  const woocomerceOrders = mapWoocomerceOrders();
+  const orders = mapWoocomerceOrders();
 
   return (
     <Container>
@@ -51,18 +58,18 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
         </Head>
 
         <Body>
-          {woocomerceOrders?.map((element, index) => {
+          {orders?.map((order, index) => {
             const active = index % 2 == 0 ? true : false;
             return (
               <>
                 <tr>
-                  <Td active={active}>{element?.name}</Td>
-                  <Td active={active}>{element?.created_at}</Td>
+                  <Td active={active}>{order?.name}</Td>
+                  <Td active={active}>{order?.created_at}</Td>
                   <Td
                     active={active}
-                  >{`${element?.customer.first_name} ${element?.customer.last_name}`}</Td>
+                  >{`${order?.customer.first_name} ${order?.customer.last_name}`}</Td>
                   <Td active={active}>Tienda Online</Td>
-                  <Td active={active}>{`$${element?.total_price}`}</Td>
+                  <Td active={active}>{`$${order?.total_price}`}</Td>
                   <Td active={active}>
                     {" "}
                     <div
@@ -76,7 +83,7 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
                         textTransform: "uppercase",
                       }}
                     >
-                      {element?.financial_status}
+                      {order?.financial_status}
                     </div>
                   </Td>
                   <Td active={active}>
@@ -91,11 +98,11 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
                         textTransform: "uppercase",
                       }}
                     >
-                      {element?.fulfillment_status}
+                      {order?.fulfillment_status}
                     </div>
                   </Td>
                   <Td active={active}>
-                    {element?.line_items[0].fulfillable_quantity}
+                    {order?.line_items[0].fulfillable_quantity}
                   </Td>
                   <Td active={active}>
                     <div
@@ -109,11 +116,11 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
                         textTransform: "uppercase",
                       }}
                     >
-                      {element?.fulfillment_status}
+                      {order?.fulfillment_status}
                     </div>
                   </Td>
                   <Td active={active}>
-                    <Link path="shipment-method" order={element}>
+                    <Link path="shipment-method" order={order}>
                       <button style={{ margin: 3, background: "#59b6e7" }}>
                         Enviar Pedido
                       </button>

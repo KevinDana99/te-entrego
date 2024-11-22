@@ -1,8 +1,10 @@
 import useFetch from "../../../../../hooks/useFetch";
+import { WoocomerceOrderType } from "../../../OrderTable/types";
 import { CustomOrderType, CustomShipmentOrderType } from "../../hooks/types";
 import { CotizationResponseItemType } from "../types";
 
 const useCotizationDetail = (
+  preOrder: WoocomerceOrderType,
   customOrder: CustomOrderType,
   handleSelectedMethod: (
     index: number,
@@ -32,6 +34,7 @@ const useCotizationDetail = (
     vlrdeclarado,
     vlrecaudo,
   } = customOrder;
+  const { customer } = preOrder;
 
   const handleCreateShipmentOrder = (
     index: number,
@@ -53,18 +56,16 @@ const useCotizationDetail = (
       vlrdeclarado,
       vlrecaudo,
       operador: element.nombre,
-
-      apellr: "",
-      celulard: "",
-      celularr: "",
-      correod: "",
-      correor: "",
-      dird: "",
-      dirr: "",
-      fecha_recogida: "",
+      celulard: customer.phone,
+      correod: customer.email,
+      dird: customer.address_1,
+      nombred: customer.first_name,
       identid: "",
+      apellr: "",
+      celularr: "",
+      correor: "",
+      dirr: "",
       identir: "",
-      nombred: "",
       nombrer: "",
       obs: "",
       adi: "",

@@ -4,10 +4,12 @@ import { OperatorContainer } from "../styled";
 import { CustomOrderType, CustomShipmentOrderType } from "../hooks/types";
 import { CotizationResponseType } from "./types";
 import useCotizationDetail from "./hooks/useCotizationDetail";
+import { WoocomerceOrderType } from "../../OrderTable/types";
 const CotizationDetail = ({
   customOrder,
   handleSelectedMethod,
   selectedMethod,
+  preOrder,
 }: {
   selectedMethod: number | null;
   handleSelectedMethod: (
@@ -15,9 +17,10 @@ const CotizationDetail = ({
     currentOrder: CustomShipmentOrderType
   ) => void;
   customOrder: CustomOrderType;
+  preOrder: WoocomerceOrderType;
 }) => {
   const { data, error, loading, handleCreateShipmentOrder } =
-    useCotizationDetail(customOrder, handleSelectedMethod);
+    useCotizationDetail(preOrder, customOrder, handleSelectedMethod);
 
   if (loading) {
     return <>cargando...</>;

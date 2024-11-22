@@ -112,7 +112,13 @@ const useShipmentMethod = (
     }
   }, [originLocation, destinationLocation]);
 
-  return { selectedMethod, shipmentOrder, customOrder, handleSelectedMethod };
+  return {
+    selectedMethod,
+    shipmentOrder,
+    customOrder,
+    preOrder: order,
+    handleSelectedMethod,
+  };
 };
 
 export default useShipmentMethod;

@@ -9,8 +9,13 @@ const ShipmentMethodTable = ({
   data: dataProp,
 }: ShipmentTableType) => {
   const { navigate, currentProps } = useRouter();
-  const { handleSelectedMethod, selectedMethod, customOrder, shipmentOrder } =
-    useShipmentMethod(dataProp, currentProps);
+  const {
+    handleSelectedMethod,
+    selectedMethod,
+    customOrder,
+    shipmentOrder,
+    preOrder,
+  } = useShipmentMethod(dataProp, currentProps);
 
   console.log(shipmentOrder);
   return (
@@ -27,6 +32,7 @@ const ShipmentMethodTable = ({
           </Head>
           {customOrder && (
             <CotizationDetail
+              preOrder={preOrder}
               customOrder={customOrder}
               handleSelectedMethod={handleSelectedMethod}
               selectedMethod={selectedMethod}
