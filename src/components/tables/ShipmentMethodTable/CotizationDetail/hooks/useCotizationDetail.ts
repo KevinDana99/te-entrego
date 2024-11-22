@@ -40,6 +40,11 @@ const useCotizationDetail = (
     index: number,
     element: CotizationResponseItemType
   ) => {
+    const hoy = new Date();
+    const anio = hoy.getFullYear();
+    const mes = String(hoy.getMonth() + 1).padStart(2, "0");
+    const dia = String(hoy.getDate()).padStart(2, "0");
+
     handleSelectedMethod(index, {
       accesoapi,
       alto,
@@ -65,10 +70,11 @@ const useCotizationDetail = (
       celularr: seller.phone,
       correor: seller.email,
       dirr: seller.address_1,
-      identid: "",
-      identir: "",
-      obs: "",
-      adi: "",
+      identid: "232323213231",
+      identir: "432214343123",
+      obs: "No hay observaciones",
+      adi: "No hay observaciones",
+      fecha_recogida: `${anio}-${mes}-${dia}`,
     });
   };
 
