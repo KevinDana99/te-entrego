@@ -19,6 +19,11 @@ const ShipmentMethodTable = ({
   } = useShipmentMethod(dataProp, currentProps);
 
   console.log(shipmentOrder);
+
+  const handleCreatedShipment = () => {
+    handleCreateShipment();
+    navigate("shipments");
+  };
   return (
     <>
       <Container>
@@ -52,10 +57,7 @@ const ShipmentMethodTable = ({
         onClick={() => {
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           confirm("¿Estas segur@ que deseas confirmar este envio?")
-            ? () => {
-                handleCreateShipment();
-                navigate("shipments");
-              }
+            ? handleCreatedShipment()
             : console.log("no send");
         }}
       >
