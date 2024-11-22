@@ -11,6 +11,7 @@ const ShipmentMethodTable = ({
   const { navigate, currentProps } = useRouter();
   const {
     handleSelectedMethod,
+    handleCreateShipment,
     selectedMethod,
     customOrder,
     shipmentOrder,
@@ -51,7 +52,10 @@ const ShipmentMethodTable = ({
         onClick={() => {
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           confirm("¿Estas segur@ que deseas confirmar este envio?")
-            ? navigate("shipments")
+            ? () => {
+                handleCreateShipment();
+                navigate("shipments");
+              }
             : console.log("no send");
         }}
       >

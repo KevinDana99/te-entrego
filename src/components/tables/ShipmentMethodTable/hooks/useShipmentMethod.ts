@@ -40,6 +40,16 @@ const useShipmentMethod = (
   };
   const [customOrder, setCustomOrder] = useState<CustomOrderType | null>(null);
 
+  const handleCreateShipment = () => {
+    fetch("https://te-entrego.com/teadmin_beta/public/api/generarenviov2", {
+      method: "POST",
+      body: JSON.stringify(shipmentOrder),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
   const handleGetOriginLocation = useFetch(
     "https://te-entrego.com/teadmin_beta/public/api/ciudades",
     {
@@ -118,6 +128,7 @@ const useShipmentMethod = (
     customOrder,
     preOrder: order,
     handleSelectedMethod,
+    handleCreateShipment,
   };
 };
 
