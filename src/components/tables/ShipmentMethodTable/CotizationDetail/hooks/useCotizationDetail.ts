@@ -34,7 +34,7 @@ const useCotizationDetail = (
     vlrdeclarado,
     vlrecaudo,
   } = customOrder;
-  const { customer, seller } = preOrder;
+  const { customer } = preOrder;
 
   const handleCreateShipmentOrder = (
     index: number,
@@ -65,11 +65,11 @@ const useCotizationDetail = (
       correod: customer.email,
       dird: customer.address_1,
       nombred: `${customer.first_name} ${customer.last_name}`,
-      nombrer: seller.shop_name,
-      apellr: seller.shop_name,
-      celularr: seller.phone,
-      correor: seller.email,
-      dirr: seller.address_1,
+      nombrer: customer.first_name,
+      apellr: customer.last_name,
+      celularr: customer.phone,
+      correor: customer.email,
+      dirr: customer.address_1,
       identid: "232323213231",
       identir: "432214343123",
       obs: "No hay observaciones",
