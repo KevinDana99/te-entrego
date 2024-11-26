@@ -60,7 +60,7 @@ const useCotizationDetail = (
       unidades,
       vlrdeclarado,
       vlrecaudo,
-      operador: element.nombre,
+      operador: element.codigo,
       celulard: customer.phone,
       correod: customer.email,
       dird: customer.address_1,
