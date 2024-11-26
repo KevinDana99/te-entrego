@@ -53,7 +53,7 @@ const useCotizationDetail = (
       dest_comision,
       dest_flete,
       destino,
-      kilos: kilos + 1,
+      kilos: parseInt(`${kilos}`) + 1,
       largo: largo + 1,
       llaveseguridad,
       origen,

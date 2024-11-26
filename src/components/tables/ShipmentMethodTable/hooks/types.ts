@@ -46,8 +46,8 @@ export interface CustomOrderType {
   largo: number;
   vlrdeclarado: string;
   vlrecaudo: number;
-  dest_flete: 0;
-  dest_comision: 0;
+  dest_flete: 0 | 1;
+  dest_comision: 0 | 1;
   operador: string;
   codigocliente: string;
   accesoapi: string;
