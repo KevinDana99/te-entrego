@@ -48,7 +48,7 @@ const useCotizationDetail = (
     handleSelectedMethod(index, {
       accesoapi,
       alto: alto + 1,
-      ancho,
+      ancho: ancho + 1,
       codigocliente,
       dest_comision,
       dest_flete,
