@@ -10,7 +10,7 @@ const Orders = ({ shopName }: { shopName: ShopNameType }) => {
   });
 
   if (error) {
-    return <>`{error}`</>;
+    console.error(error);
   }
 
   if (loading) {
