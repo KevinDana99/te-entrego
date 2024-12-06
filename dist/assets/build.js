@@ -46,7 +46,7 @@ Error generating stack: `+i.message+`
   width: 125px;
   margin-bottom: 50px;
 `,E1=P.div`
-  margin-right: 13px;
+  margin: 0px 13px;
   padding: 20px;
   min-width: 251px;
   background-color: #ffffff;
@@ -281,7 +281,7 @@ Error generating stack: `+i.message+`
   margin-top: 10px;
 `,vo=P.div`
   margin-top: 21px;
-`,sg=()=>{const{currentProps:e}=Yr(),t=e.shipmentData;return console.log(t),a.jsxs(lg,{children:[a.jsxs(mo,{children:[a.jsx(go,{children:a.jsx(ig,{})}),a.jsx(Gt,{children:"en reparto"}),a.jsxs(vo,{children:[a.jsx("b",{children:"Estado:"})," ",a.jsx(Gt,{children:" en reparto"})]}),"24-04-2024"]}),a.jsx(yl,{}),a.jsxs(mo,{children:[a.jsx(go,{children:t.estado==="TERMINAL DESTINO"||t.estado==="ENTREGADA"||t.estado==="A RECIBIR POR COORDINADORA"||t.estado==="EN TRANSPORTE"?a.jsx(vl,{}):a.jsx(ml,{})}),a.jsx(Gt,{children:"en terminal de destino"}),a.jsxs(vo,{children:[a.jsx("b",{children:"Estado:"})," ",a.jsx(Gt,{children:" en terminal de destino"})]}),"24-04-2024"]}),a.jsx(yl,{}),a.jsxs(mo,{children:[a.jsx(go,{children:t.estado==="EN TRANSPORTE"||t.estado==="A RECIBIR POR COORDINADORA"||t.estado==="ENTREGADA"?a.jsx(vl,{}):a.jsx(ml,{})}),a.jsx(Gt,{children:"en transporte"}),a.jsxs(vo,{children:[a.jsx("b",{children:"Estado:"})," ",a.jsx(Gt,{children:" en transporte"})]}),"24-04-2024"]}),a.jsx(yl,{}),a.jsxs(mo,{children:[a.jsx(go,{children:t.estado==="ENTREGADA"?a.jsx(vl,{}):a.jsx(ml,{})}),a.jsx(Gt,{children:"entregado"}),a.jsx(vo,{style:{color:"#60789A"},children:"Llego tu pedido"})]})]})},ug=P.div`
+`,sg=()=>{const{currentProps:e}=Yr(),t=e.shipmentData;return console.log(t),a.jsxs(lg,{children:[a.jsxs(mo,{children:[a.jsx(go,{children:a.jsx(ig,{})}),a.jsx(Gt,{children:"en reparto"}),a.jsxs(vo,{children:[a.jsx("b",{children:"Estado:"})," ",a.jsx(Gt,{children:" en reparto"})]}),t.fecha]}),a.jsx(yl,{}),a.jsxs(mo,{children:[a.jsx(go,{children:t.estado==="TERMINAL DESTINO"||t.estado==="ENTREGADA"||t.estado==="A RECIBIR POR COORDINADORA"||t.estado==="EN TRANSPORTE"?a.jsx(vl,{}):a.jsx(ml,{})}),a.jsx(Gt,{children:"en terminal de destino"}),a.jsxs(vo,{children:[a.jsx("b",{children:"Estado:"})," ",a.jsx(Gt,{children:" en terminal de destino"})]}),t.fecha]}),a.jsx(yl,{}),a.jsxs(mo,{children:[a.jsx(go,{children:t.estado==="EN TRANSPORTE"||t.estado==="A RECIBIR POR COORDINADORA"||t.estado==="ENTREGADA"?a.jsx(vl,{}):a.jsx(ml,{})}),a.jsx(Gt,{children:"en transporte"}),a.jsxs(vo,{children:[a.jsx("b",{children:"Estado:"})," ",a.jsx(Gt,{children:" en transporte"})]}),t.fecha]}),a.jsx(yl,{}),a.jsxs(mo,{children:[a.jsx(go,{children:t.estado==="ENTREGADA"?a.jsx(vl,{}):a.jsx(ml,{})}),a.jsx(Gt,{children:"entregado"}),a.jsx(vo,{style:{color:"#60789A"},children:"Llego tu pedido"})]})]})},ug=P.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
