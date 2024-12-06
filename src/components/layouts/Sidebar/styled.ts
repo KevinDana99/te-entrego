@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "../../../routes";
 export const Container = styled.div`
-  margin-right: 13px;
+  margin: 0px 13px;
   padding: 20px;
   min-width: 251px;
   background-color: #ffffff;
