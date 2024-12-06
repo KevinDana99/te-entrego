@@ -42,6 +42,7 @@ export const Input = styled.input`
   color: black;
   border: none !important;
   outline: none;
+  min-height: 0px !important;
 `;
 
 export const SelectTitle = styled.span`
@@ -56,7 +57,7 @@ export const Select = styled.select`
   background-color: transparent;
   color: black;
   border: none !important;
-  min-width: none !important;
+  max-width: 100% !important;
   outline: none;
 `;
 
