@@ -18,7 +18,7 @@ const ShipmentStatus = () => {
         <Detail>
           <b>Estado:</b> <Status> en reparto</Status>
         </Detail>
-        24-04-2024
+        {shipment.fecha}
       </Card>
       <Divider />
       <Card>
@@ -36,7 +36,7 @@ const ShipmentStatus = () => {
         <Detail>
           <b>Estado:</b> <Status> en terminal de destino</Status>
         </Detail>
-        24-04-2024
+        {shipment.fecha}
       </Card>
       <Divider />
       <Card>
@@ -53,7 +53,7 @@ const ShipmentStatus = () => {
         <Detail>
           <b>Estado:</b> <Status> en transporte</Status>
         </Detail>
-        24-04-2024
+        {shipment.fecha}
       </Card>
       <Divider />
       <Card>
@@ -72,7 +72,3 @@ const ShipmentStatus = () => {
 };
 
 export default ShipmentStatus;
-/*
-
-
-      */
