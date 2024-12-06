@@ -41,7 +41,7 @@ export const Input = styled.input`
   background-color: transparent;
   color: black;
   border: none !important;
-  outline: none;
+  outline: none !important;
   min-height: 0px !important;
 `;
 
@@ -58,7 +58,7 @@ export const Select = styled.select`
   color: black;
   border: none !important;
   max-width: 100% !important;
-  outline: none;
+  outline: none !important;
 `;
 
 export const Icon = styled.span`
