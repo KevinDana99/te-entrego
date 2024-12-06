@@ -1,6 +1,6 @@
 import AppRouter from "./../routes";
 import { Container } from "./styled";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Sidebar from "../components/layouts/Sidebar";
 import Views from "../views";
 import Layout from "../Layout";
@@ -10,24 +10,39 @@ import { ShopNameType } from "../hooks/usePolling/types";
 
 const Wrapper = ({ shopName }: { shopName: ShopNameType }) => {
   useConfig();
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    setShow(true);
-  }, []);
 
   const [auth, setAuth] = useState(false);
-  const handleLogin = () => {
+  const handleValidateLogin = async () => {
+    /* const res = await fetch("https://te-entrego.com/wp-login.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        log: "contactenos@lumagodecolombia.com",
+        pwd: "tu_contraseña",
+        rememberme: "1",
+      }),
+    });
+    */
     setAuth(true);
+    console.log("hello");
+    /* if (res.ok) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }*/
   };
+
   if (!auth) {
     return (
       <>
-        <Login onLogin={handleLogin} />
+        <Login onLogin={handleValidateLogin} />
       </>
     );
   } else {
     return (
-      show && (
+      auth && (
         <Container>
           <AppRouter defaultPath="shipments">
             <Layout>
