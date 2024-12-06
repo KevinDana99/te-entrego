@@ -56,6 +56,7 @@ export const Select = styled.select`
   height: 100%;
   background-color: transparent;
   color: black;
+  min-height: 0px !important;
   border: none !important;
   max-width: 100% !important;
   outline: none !important;

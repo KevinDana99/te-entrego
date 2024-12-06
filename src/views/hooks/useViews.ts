@@ -28,6 +28,10 @@ const useViews = () => {
   const { currentPath } = useRouter();
   const selectedPath = titles[currentPath];
 
+  const minDate = new Date();
+  minDate.setDate(minDate.getDate() - (14 + 1));
+  const maxDate = new Date();
+
   const shipmentData: {
     error: unknown;
     loading: boolean;
@@ -35,8 +39,12 @@ const useViews = () => {
   } = useFetch(
     "https://te-entrego.com/teadmin_beta/public/api/estados_enviosv2",
     {
-      min: "2021-04-18",
-      max: "2024-12-25",
+      min: `${minDate.getFullYear()}-${
+        minDate.getMonth() + 1
+      }-${minDate.getDate()}`,
+      max: `${maxDate.getFullYear()}-${
+        maxDate.getMonth() + 1
+      }-${maxDate.getDate()}`,
       codigocliente: ACCESS_CLIENT_CODE,
       accesoapi: ACCESS_PUBLIC_KEY,
       llaveseguridad: ACCESS_SECRET_KEY,
