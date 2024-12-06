@@ -206,7 +206,7 @@ Error generating stack: `+i.message+`
   height: 100%;
   background-color: transparent;
   color: black;
-  border: none;
+  border: none !important;
   outline: none;
 `;P.span`
   font-weight: 650;
@@ -217,7 +217,8 @@ Error generating stack: `+i.message+`
   height: 100%;
   background-color: transparent;
   color: black;
-  border: none;
+  border: none !important;
+  min-width: none !important;
   outline: none;
 `,Vt=P.span`
   margin-left: 3px;

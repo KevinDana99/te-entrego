@@ -40,7 +40,7 @@ export const Input = styled.input`
   height: 100%;
   background-color: transparent;
   color: black;
-  border: none;
+  border: none !important;
   outline: none;
 `;
 
@@ -55,7 +55,8 @@ export const Select = styled.select`
   height: 100%;
   background-color: transparent;
   color: black;
-  border: none;
+  border: none !important;
+  min-width: none !important;
   outline: none;
 `;
 
