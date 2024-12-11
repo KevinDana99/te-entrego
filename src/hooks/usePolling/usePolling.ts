@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { UsePollingType } from "./types";
 import handleGetOrders from "./functions/handleGetOrders";
 import { ConfigType } from "../../views/Config/hooks/useConfig";
+import { orderErrors } from "./mocks/errors";
 
 const TIME_INTERVAL_REQUEST = 8000;
 
 const usePolling = ({
   time = TIME_INTERVAL_REQUEST,
   shopName = "woocommerce",
+  store,
 }: UsePollingType) => {
   const config: ConfigType = JSON.parse(localStorage.getItem("config") ?? "");
   const PUBLIC_KEY = config.platform_public_key;
@@ -19,6 +21,7 @@ const usePolling = ({
 
   const selectedShop = handleGetOrders({
     shopName,
+    store,
     publicKey: PUBLIC_KEY,
     secretKey: SECRET_KEY,
   });
@@ -31,10 +34,16 @@ const usePolling = ({
         method: "GET",
       });
       const res = await req.json();
-      setData(res);
+      if (!res.error) {
+        setData(res);
+      } else {
+        if (orderErrors["authorization-error"].error === res.message) {
+          setError(orderErrors["authorization-error"].message);
+        }
+      }
     } catch (err) {
       if (err instanceof Error) {
-        setError({ error: err.message });
+        setError(err.message);
       }
     } finally {
       setLoading(false);
@@ -50,7 +59,7 @@ const usePolling = ({
       setPartialData(res);
     } catch (err) {
       if (err instanceof Error) {
-        setError({ error: err.message });
+        setError(err.message);
       }
     }
   };

@@ -6,7 +6,7 @@ import {
   WoocomerceOrderType,
 } from "./types";
 
-const OrderTable = ({ headers, data }: OrderTableType) => {
+const OrderTable = ({ headers, data, shopName }: OrderTableType) => {
   const mapWoocomerceOrders = () => {
     const woocomerceData = data as WoocomerceOrdersType;
     const orders = woocomerceData.map((item) => {
@@ -44,8 +44,17 @@ const OrderTable = ({ headers, data }: OrderTableType) => {
     return orders;
   };
 
-  const orders = mapWoocomerceOrders();
+  const mapShopifyOrders = () => {};
 
+  const handleSelectedOrders = () => {
+    if (shopName === "shopify") {
+      return mapShopifyOrders();
+    }
+    if (shopName === "woocommerce") {
+      return mapWoocomerceOrders();
+    }
+  };
+  const orders = handleSelectedOrders();
   return (
     <Container>
       <Block> </Block>

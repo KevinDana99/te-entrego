@@ -2,23 +2,41 @@ import Logo from "../../components/assets/Logo";
 import OrderTable from "../../components/tables/OrderTable";
 import { ShopNameType } from "../../hooks/usePolling/types";
 import usePolling from "../../hooks/usePolling/usePolling";
+import { StoreType } from "../../wrapper";
 
-const Orders = ({ shopName }: { shopName: ShopNameType }) => {
+const Orders = ({
+  shopName,
+  store,
+}: {
+  shopName: ShopNameType;
+  store?: StoreType;
+}) => {
   const { data, loading, error } = usePolling({
+    store,
     shopName,
     time: 5000,
   });
-
-  if (error) {
-    console.error(error);
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Logo size={250} />
+      </div>
+    );
   }
 
-  if (loading) {
-    return <Logo size={250} />;
+  if (error) {
+    return `${error}`;
   }
 
   return (
     <OrderTable
+      shopName={shopName}
       data={data}
       headers={[
         "Pedido",

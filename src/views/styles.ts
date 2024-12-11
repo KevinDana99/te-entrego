@@ -3,10 +3,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 1200px;
+  width: calc(100% - 289px);
   background-color: #ffffff;
   padding: 68px 21px;
-  height: 700px;
+  height: 100%;
 `;
 
 export const Title = styled.div`

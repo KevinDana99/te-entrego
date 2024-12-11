@@ -1,10 +1,12 @@
 import wooOrdersMock from "./../../../mocks/OrderTable/wooOrderMock.json";
 import ordersMock from "./../../../mocks/OrderTable/index.json";
+import { ShopNameType } from "../../../hooks/usePolling/types";
 export type OrdersType = typeof ordersMock;
 export type WoocomerceOrdersType = typeof wooOrdersMock;
 export type OrderTableType = {
   headers: string[];
   data: WoocomerceOrdersType | OrdersType;
+  shopName: ShopNameType;
 };
 
 export type WoocomerceOrderType = {

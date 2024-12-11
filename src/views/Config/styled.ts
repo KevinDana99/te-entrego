@@ -83,7 +83,8 @@ export const Button = styled.button`
 `;
 
 export const Alert = styled.div<{ theme: string }>`
-  position: relative;
+  position: absolute;
+  bottom: 40px;
   padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
   margin-bottom: var(--bs-alert-margin-bottom);
   color: var(--bs-alert-color);
