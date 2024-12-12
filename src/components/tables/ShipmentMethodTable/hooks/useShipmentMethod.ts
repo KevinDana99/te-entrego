@@ -124,7 +124,7 @@ const useShipmentMethod = (
 
   useEffect(() => {
     console.log({ customOrder, customOrder2: customOrder });
-  }, []);
+  }, [customOrder]);
   return {
     selectedMethod,
     shipmentOrder,
