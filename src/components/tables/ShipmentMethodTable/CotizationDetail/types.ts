@@ -21,6 +21,7 @@ export type CotizationResponseItemType = {
     valor_com_fran: number;
     btn: string;
     xml: string;
+    cobrarcliente: number;
   };
 };
 

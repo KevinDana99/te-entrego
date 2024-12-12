@@ -110,7 +110,7 @@ const useShipmentMethod = (
         ancho: width || 1,
         alto: height || 1,
         largo: length || 1,
-        vlrdeclarado: order.total_price,
+        vlrdeclarado: parseInt(`${order.total_price}`),
         vlrecaudo: order.sub_total_price,
         dest_flete: 0,
         dest_comision: 0,

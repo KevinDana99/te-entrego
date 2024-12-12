@@ -51,7 +51,12 @@ const CotizationDetail = ({
                 </OperatorContainer>
               </Td>
               <Td active={active}>
-                <div>Flete total: ${element?.resultados.total}</div>
+                <div>Flete: ${element?.resultados.total}</div>
+                <div>
+                  Logística Recaudo: ${element?.resultados.comisionrecaudo}
+                </div>
+                <div>Flete total: ${element?.resultados.cobrarcliente}</div>
+                <div>Neto Recaudo: ${element?.resultados.netorecaudo}</div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: `${element?.resultados.adicionales}`,

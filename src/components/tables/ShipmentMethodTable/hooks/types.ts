@@ -9,7 +9,7 @@ export interface CustomShipmentOrderType {
   destino: string;
   unidades: number;
   kilos: number;
-  vlrdeclarado: string;
+  vlrdeclarado: number;
   vlrecaudo: number;
   ancho: number;
   alto: number;
@@ -44,7 +44,7 @@ export interface CustomOrderType {
   ancho: number;
   alto: number;
   largo: number;
-  vlrdeclarado: string;
+  vlrdeclarado: number;
   vlrecaudo: number;
   dest_flete: 0 | 1;
   dest_comision: 0 | 1;
