@@ -52,24 +52,32 @@ const CotizationDetail = ({
                 </OperatorContainer>
               </Td>
               <Td active={active}>
-                <div>Flete: {formatCurrency(element?.resultados.total)}</div>
-                <div>
-                  Logística Recaudo:
-                  {formatCurrency(element?.resultados.comisionrecaudo)}
-                </div>
-                <div>
-                  Flete total:
-                  {formatCurrency(element?.resultados.cobrarcliente)}
-                </div>
-                <div>
-                  Neto Recaudo:
-                  {formatCurrency(element?.resultados.netorecaudo)}
-                </div>
                 <div
-                  dangerouslySetInnerHTML={{
-                    __html: `${element?.resultados.adicionales}`,
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
                   }}
-                ></div>
+                >
+                  <div>Flete: {formatCurrency(element?.resultados.total)}</div>
+                  <div>
+                    Logística Recaudo:{" "}
+                    {formatCurrency(element?.resultados.comisionrecaudo)}
+                  </div>
+                  <div>
+                    Flete total:{" "}
+                    {formatCurrency(element?.resultados.cobrarcliente)}
+                  </div>
+                  <div>
+                    Neto Recaudo:{" "}
+                    {formatCurrency(element?.resultados.netorecaudo)}
+                  </div>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `${element?.resultados.adicionales}`,
+                    }}
+                  ></div>
+                </div>
               </Td>
               <Td active={active}>
                 {index === selectedMethod ? (
