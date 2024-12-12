@@ -1,5 +1,4 @@
 import { Body, Td } from "../../Table/styled";
-import Logo from "../../../assets/Logo";
 import { OperatorContainer } from "../styled";
 import { CustomOrderType, CustomShipmentOrderType } from "../hooks/types";
 import { CotizationResponseType } from "./types";
@@ -41,13 +40,16 @@ const CotizationDetail = ({
             <tr>
               <Td active={active}>
                 <OperatorContainer>
-                  {element.logo ? (
+                  {element.codigo === "9" ? (
+                    <img
+                      width={150}
+                      src={`https://te-entrego.com/admin-assets/images/logo_registro.svg`}
+                    />
+                  ) : (
                     <img
                       width={150}
                       src={`https://te-entrego.com/teadmin_beta/public/assets/operadores/${element.logo}`}
                     />
-                  ) : (
-                    <Logo />
                   )}
                 </OperatorContainer>
               </Td>
