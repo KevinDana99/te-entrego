@@ -3,7 +3,7 @@ import Logo from "../components/assets/Logo";
 import { Route, Router } from "../routes";
 import Orders from "./Orders";
 import Shipments from "./Shipments";
-import { Container, Title } from "./styles";
+import { Container, Title } from "./styled";
 import Config from "./Config";
 import useViews from "./hooks/useViews";
 import ShipmentStatus from "./ShipmentStatus";

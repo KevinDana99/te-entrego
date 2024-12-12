@@ -53,6 +53,7 @@ Error generating stack: `+i.message+`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-sizing: border-box;
 `,kh=L.div`
   margin-top: 47px;
   width: 230px;

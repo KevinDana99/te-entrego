@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-sizing: border-box;
 `;
 export const Selector = styled.div`
   margin-top: 47px;
