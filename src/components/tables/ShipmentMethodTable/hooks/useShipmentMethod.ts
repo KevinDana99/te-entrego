@@ -106,7 +106,7 @@ const useShipmentMethod = (
         origen: originLocation[0].codigodanelargo,
         destino: destinationLocation[0].codigodanelargo,
         unidades: order.line_items[0].fulfillable_quantity,
-        kilos: weight || 1,
+        kilos: parseInt(`${weight}`) || 1,
         ancho: width || 1,
         alto: height || 1,
         largo: length || 1,
