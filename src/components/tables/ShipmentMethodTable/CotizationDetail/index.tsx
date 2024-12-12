@@ -5,6 +5,7 @@ import { CustomOrderType, CustomShipmentOrderType } from "../hooks/types";
 import { CotizationResponseType } from "./types";
 import useCotizationDetail from "./hooks/useCotizationDetail";
 import { WoocomerceOrderType } from "../../OrderTable/types";
+import formatCurrency from "../../../../utils/formatCurrency";
 const CotizationDetail = ({
   customOrder,
   handleSelectedMethod,
@@ -51,12 +52,19 @@ const CotizationDetail = ({
                 </OperatorContainer>
               </Td>
               <Td active={active}>
-                <div>Flete: ${element?.resultados.total}</div>
+                <div>Flete: {formatCurrency(element?.resultados.total)}</div>
                 <div>
-                  Logística Recaudo: ${element?.resultados.comisionrecaudo}
+                  Logística Recaudo:
+                  {formatCurrency(element?.resultados.comisionrecaudo)}
                 </div>
-                <div>Flete total: ${element?.resultados.cobrarcliente}</div>
-                <div>Neto Recaudo: ${element?.resultados.netorecaudo}</div>
+                <div>
+                  Flete total:
+                  {formatCurrency(element?.resultados.cobrarcliente)}
+                </div>
+                <div>
+                  Neto Recaudo:
+                  {formatCurrency(element?.resultados.netorecaudo)}
+                </div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: `${element?.resultados.adicionales}`,
