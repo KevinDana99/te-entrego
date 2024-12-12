@@ -167,6 +167,7 @@ Error generating stack: `+i.message+`
   background-color: #ffffff;
   padding: 68px 21px;
   height: 100%;
+  box-sizing: border-box;
 `,Kh=L.div`
   font-weight: 600;
   font-size: 25px;

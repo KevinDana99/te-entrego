@@ -7,6 +7,7 @@ export const Container = styled.div`
   background-color: #ffffff;
   padding: 68px 21px;
   height: 100%;
+  box-sizing: border-box;
 `;
 
 export const Title = styled.div`

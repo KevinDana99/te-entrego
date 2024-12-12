@@ -1,6 +1,5 @@
 import AppRouter from "./../routes";
 import { Container } from "./styled";
-
 import Sidebar from "../components/layouts/Sidebar";
 import Views from "../views";
 import Layout from "../Layout";
