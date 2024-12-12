@@ -42,7 +42,7 @@ const CotizationDetail = ({
                 <OperatorContainer>
                   {element.logo ? (
                     <img
-                      width={100}
+                      width={150}
                       src={`https://te-entrego.com/teadmin_beta/public/assets/operadores/${element.logo}`}
                     />
                   ) : (
