@@ -82,7 +82,7 @@ const CotizationDetail = ({
                 </div>
               </Td>
               <Td active={active}>
-                {index === selectedMethod ? (
+                {parseInt(element.codigo) === selectedMethod ? (
                   <button
                     style={{
                       margin: 3,
