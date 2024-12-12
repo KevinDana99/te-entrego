@@ -47,14 +47,14 @@ const useCotizationDetail = (
 
     handleSelectedMethod(index, {
       accesoapi,
-      alto: alto + 1,
-      ancho: ancho + 1,
+      alto: alto,
+      ancho: ancho,
       codigocliente,
       dest_comision,
       dest_flete,
       destino,
-      kilos: parseInt(`${kilos}`) + 1,
-      largo: largo + 1,
+      kilos: parseInt(`${kilos}`),
+      largo: largo,
       llaveseguridad,
       origen,
       unidades,
