@@ -123,7 +123,7 @@ const useShipmentMethod = (
   }, [originLocation, destinationLocation]);
 
   useEffect(() => {
-    console.log({ customOrder, customOrder2: customOrder });
+    console.log({ customOrder });
   }, [customOrder]);
   return {
     selectedMethod,
