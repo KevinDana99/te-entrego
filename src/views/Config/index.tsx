@@ -36,7 +36,7 @@ const Config = () => {
             onChange={(e) => handleOnChangeConfig({ operator: e.target.value })}
           >
             {options.map((operator) => (
-              <option value={operator.value}>{operator.name}</option>
+              <option value={operator.code}>{operator.name}</option>
             ))}
           </Select>
         </InputWrapper>

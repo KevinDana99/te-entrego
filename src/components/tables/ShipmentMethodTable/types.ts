@@ -27,5 +27,4 @@ export const shipmentMethodMock = [
 export type ShipmentsType = typeof shipmentMethodMock;
 export type ShipmentTableType = {
   headers: string[];
-  data: ShipmentsType;
 };

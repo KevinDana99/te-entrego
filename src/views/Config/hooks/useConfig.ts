@@ -85,21 +85,25 @@ const useConfig = () => {
     {
       name: "Te-Entrego",
       value: "te-entrego",
+      code: "9",
     },
 
     {
       name: "TCC",
       value: "tcc",
+      code: "1",
     },
 
     {
       name: "Coordinadora",
       value: "coordinadora",
+      code: "7",
     },
 
     {
       name: "Envia",
       value: "envia",
+      code: "11",
     },
   ];
 

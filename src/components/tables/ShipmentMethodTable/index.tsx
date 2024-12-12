@@ -4,10 +4,7 @@ import CotizationDetail from "./CotizationDetail";
 import useShipmentMethod from "./hooks/useShipmentMethod";
 import { ShipmentTableType } from "./types";
 
-const ShipmentMethodTable = ({
-  headers,
-  data: dataProp,
-}: ShipmentTableType) => {
+const ShipmentMethodTable = ({ headers }: ShipmentTableType) => {
   const { navigate, currentProps } = useRouter();
   const {
     handleSelectedMethod,
@@ -15,7 +12,7 @@ const ShipmentMethodTable = ({
     selectedMethod,
     customOrder,
     preOrder,
-  } = useShipmentMethod(dataProp, currentProps);
+  } = useShipmentMethod(currentProps);
 
   const handleCreatedShipment = () => {
     handleCreateShipment();

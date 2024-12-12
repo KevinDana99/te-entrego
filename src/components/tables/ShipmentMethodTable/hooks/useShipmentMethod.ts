@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { ShipmentTableType } from "../types";
 import useFetch from "../../../../hooks/useFetch";
 import { WoocomerceOrderType } from "../../OrderTable/types";
 import { ConfigType } from "../../../../views/Config/hooks/useConfig";
@@ -9,19 +8,13 @@ import {
   LocationResponseType,
 } from "./types";
 
-const useShipmentMethod = (
-  dataProp: ShipmentTableType["data"],
-  currentProps: { order: WoocomerceOrderType }
-) => {
+const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   const storedConfig = localStorage.getItem("config");
   const config: ConfigType = storedConfig && JSON.parse(storedConfig);
 
   const handleLoadConfig = () => {
     const operator = config.operator;
-    const getPosition = dataProp.findIndex(
-      (el) => el.operator.toLowerCase() === operator
-    );
-    return getPosition;
+    return parseInt(operator);
   };
   const order = currentProps.order;
   const city = order.customer.city;
