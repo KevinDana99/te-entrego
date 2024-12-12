@@ -23,6 +23,7 @@ const useShipmentMethod = (
     );
     return getPosition;
   };
+  console.log(currentProps.order);
   const order = currentProps.order;
   const city = order.customer.city;
   const [selectedMethod, setSelectedMethod] = useState<number | null>(

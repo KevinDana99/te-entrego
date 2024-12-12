@@ -14,11 +14,8 @@ const ShipmentMethodTable = ({
     handleCreateShipment,
     selectedMethod,
     customOrder,
-    shipmentOrder,
     preOrder,
   } = useShipmentMethod(dataProp, currentProps);
-
-  console.log(shipmentOrder);
 
   const handleCreatedShipment = () => {
     handleCreateShipment();
