@@ -12,10 +12,6 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   const storedConfig = localStorage.getItem("config");
   const config: ConfigType = storedConfig && JSON.parse(storedConfig);
 
-  const handleLoadConfig = () => {
-    const operator = config.operator;
-    return parseInt(operator);
-  };
   const order = currentProps.order;
   const city = order.customer.city;
   const [selectedMethod, setSelectedMethod] = useState<number | null>(null);
@@ -30,7 +26,10 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     setShipmentOrder(currentOrder);
   };
   const [customOrder, setCustomOrder] = useState<CustomOrderType | null>(null);
-
+  const handleLoadConfig = () => {
+    const operator = config.operator;
+    setSelectedMethod(parseInt(operator));
+  };
   const handleCreateShipment = () => {
     fetch("https://te-entrego.com/teadmin_beta/public/api/generarenviov2", {
       method: "POST",
