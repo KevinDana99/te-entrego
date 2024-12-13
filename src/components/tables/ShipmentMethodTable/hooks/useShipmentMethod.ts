@@ -18,9 +18,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   };
   const order = currentProps.order;
   const city = order.customer.city;
-  const [selectedMethod, setSelectedMethod] = useState<number | null>(
-    handleLoadConfig()
-  );
+  const [selectedMethod, setSelectedMethod] = useState<number | null>(null);
   const [shipmentOrder, setShipmentOrder] =
     useState<CustomShipmentOrderType | null>(null);
 
@@ -115,14 +113,9 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   useEffect(() => {
     if (originLocation.length !== 0 && destinationLocation.length !== 0) {
       handleSetCustomOrder();
+      handleLoadConfig();
     }
   }, [originLocation, destinationLocation]);
-
-  useEffect(() => {
-    if (originLocation.length !== 0 && destinationLocation.length !== 0) {
-      handleSetCustomOrder();
-    }
-  }, [selectedMethod]);
 
   return {
     selectedMethod,
