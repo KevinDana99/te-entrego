@@ -51,4 +51,5 @@ export type WoocomerceOrderType = {
     height: number;
     length: number;
   }[];
+  payment_method: string;
 };

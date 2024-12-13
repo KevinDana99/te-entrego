@@ -38,6 +38,7 @@ const OrderTable = ({ headers, data, shopName }: OrderTableType) => {
           },
         ],
         products: item.products,
+        payment_method: item.payment_method,
       };
       return order;
     });
