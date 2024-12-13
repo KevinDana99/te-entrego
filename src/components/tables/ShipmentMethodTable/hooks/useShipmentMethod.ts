@@ -116,11 +116,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     if (originLocation.length !== 0 && destinationLocation.length !== 0) {
       handleSetCustomOrder();
     }
-  }, [originLocation, destinationLocation]);
-
-  useEffect(() => {
-    handleSetCustomOrder();
-  }, [selectedMethod]);
+  }, [originLocation, destinationLocation, selectedMethod]);
 
   return {
     selectedMethod,
