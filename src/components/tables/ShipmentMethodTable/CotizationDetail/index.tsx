@@ -101,7 +101,12 @@ const CotizationDetail = ({
                       background: "#59b6e7",
                       outline: "none",
                     }}
-                    onClick={() => handleCreateShipmentOrder(index, element)}
+                    onClick={() =>
+                      handleCreateShipmentOrder(
+                        parseInt(element.codigo),
+                        element
+                      )
+                    }
                   >
                     Seleccionar
                   </button>
