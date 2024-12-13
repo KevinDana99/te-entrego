@@ -93,31 +93,35 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
 
   const { height, length, weight, width } = handleGetSizesProducts();
 
+  const handleSetCustomOrder = () => {
+    setCustomOrder({
+      origen: originLocation[0].codigodanelargo,
+      destino: destinationLocation[0].codigodanelargo,
+      unidades: order.line_items[0].fulfillable_quantity,
+      kilos: parseInt(`${weight}`) || 1,
+      ancho: width || 1,
+      alto: height || 1,
+      largo: length || 1,
+      vlrdeclarado: parseInt(`${order.total_price}`),
+      vlrecaudo: order.sub_total_price,
+      dest_flete: 0,
+      dest_comision: 0,
+      operador: "",
+      codigocliente: config.client_code,
+      accesoapi: config.public_key,
+      llaveseguridad: config.secret_key,
+    });
+  };
   useEffect(() => {
     if (originLocation.length !== 0 && destinationLocation.length !== 0) {
-      setCustomOrder({
-        origen: originLocation[0].codigodanelargo,
-        destino: destinationLocation[0].codigodanelargo,
-        unidades: order.line_items[0].fulfillable_quantity,
-        kilos: parseInt(`${weight}`) || 1,
-        ancho: width || 1,
-        alto: height || 1,
-        largo: length || 1,
-        vlrdeclarado: parseInt(`${order.total_price}`),
-        vlrecaudo: order.sub_total_price,
-        dest_flete: 0,
-        dest_comision: 0,
-        operador: "",
-        codigocliente: config.client_code,
-        accesoapi: config.public_key,
-        llaveseguridad: config.secret_key,
-      });
+      handleSetCustomOrder();
     }
   }, [originLocation, destinationLocation]);
 
   useEffect(() => {
-    console.log({ customOrder });
-  }, [customOrder]);
+    handleSetCustomOrder();
+  }, [selectedMethod]);
+
   return {
     selectedMethod,
     shipmentOrder,
