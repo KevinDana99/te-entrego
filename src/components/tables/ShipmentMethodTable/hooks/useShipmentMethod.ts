@@ -99,7 +99,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
       ancho: parseInt(`${width}`) || 0,
       alto: parseInt(`${height}`) || 0,
       largo: parseInt(`${length}`) || 0,
-      vlrdeclarado: parseInt(`${order.total_price}`) * 2,
+      vlrdeclarado: parseInt(`${order.total_price}`),
       vlrecaudo: order.payment_method !== "cod" ? 0 : order.sub_total_price,
       dest_flete: order.payment_method === "cod" ? 1 : 0,
       dest_comision: order.payment_method === "cod" ? 1 : 0,
