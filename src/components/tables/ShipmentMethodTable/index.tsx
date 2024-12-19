@@ -1,4 +1,5 @@
 import useRouter from "../../../routes/context/hook/useRouter";
+import Logo from "../../assets/Logo";
 import { Head, Table, Th, Container, Block } from "../Table/styled";
 import CotizationDetail from "./CotizationDetail";
 import useShipmentMethod from "./hooks/useShipmentMethod";
@@ -12,12 +13,34 @@ const ShipmentMethodTable = ({ headers }: ShipmentTableType) => {
     selectedMethod,
     customOrder,
     preOrder,
+    loading,
+    error,
   } = useShipmentMethod(currentProps);
 
-  const handleCreatedShipment = () => {
-    handleCreateShipment();
+  const handleRedirection = async () => {
+    await handleCreateShipment();
     navigate("shipments");
   };
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <Logo size={250} />
+      </div>
+    );
+  }
+
+  if (error) {
+    return `${JSON.stringify(error)}`;
+  }
   return (
     <>
       <Container>
@@ -51,7 +74,7 @@ const ShipmentMethodTable = ({ headers }: ShipmentTableType) => {
         onClick={() => {
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
           confirm("¿Estas segur@ que deseas confirmar este envio?")
-            ? handleCreatedShipment()
+            ? handleRedirection()
             : console.log("no send");
         }}
       >

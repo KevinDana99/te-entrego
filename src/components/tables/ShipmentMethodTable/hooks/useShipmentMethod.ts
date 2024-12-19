@@ -11,13 +11,14 @@ import {
 const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   const storedConfig = localStorage.getItem("config");
   const config: ConfigType = storedConfig && JSON.parse(storedConfig);
-
   const order = currentProps.order;
   const city = order.customer.city;
   const [selectedMethod, setSelectedMethod] = useState<number | null>(null);
   const [shipmentOrder, setShipmentOrder] =
     useState<CustomShipmentOrderType | null>(null);
   const [customOrder, setCustomOrder] = useState<CustomOrderType | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<null | unknown>(null);
   const handleSelectedMethod = (
     index: number,
     currentOrder: CustomShipmentOrderType
@@ -26,14 +27,24 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     setShipmentOrder(currentOrder);
   };
 
-  const handleCreateShipment = () => {
-    fetch("https://te-entrego.com/teadmin_beta/public/api/generarenviov2", {
-      method: "POST",
-      body: JSON.stringify(shipmentOrder),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  const handleCreateShipment = async () => {
+    try {
+      setLoading(true);
+      await fetch(
+        "https://te-entrego.com/teadmin_beta/public/api/generarenviov2",
+        {
+          method: "POST",
+          body: JSON.stringify(shipmentOrder),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleGetOriginLocation = useFetch(
@@ -116,6 +127,8 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     shipmentOrder,
     customOrder,
     preOrder: order,
+    loading,
+    error,
     handleSelectedMethod,
     handleCreateShipment,
   };
