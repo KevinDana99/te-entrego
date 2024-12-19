@@ -130,6 +130,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
 
   useEffect(() => {
     handleLoadConfig();
+    console.log(`customOrder: cargada`);
   }, [customOrder]);
   return {
     selectedMethod,
