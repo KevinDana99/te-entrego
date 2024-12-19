@@ -91,6 +91,7 @@ const useCotizationDetail = (
   };
 
   useEffect(() => {
+    console.log({ customOrder });
     handleLoadConfig();
   }, [customOrder]);
   return { loading, data, error, customOrder, handleCreateShipmentOrder };

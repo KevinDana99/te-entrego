@@ -7,7 +7,6 @@ import { Card, Container, Detail, Divider, Status, WrapperImg } from "./styled";
 const ShipmentStatus = () => {
   const { currentProps } = useRouter();
   const shipment = currentProps.shipmentData;
-  console.log(shipment);
   return (
     <Container>
       <Card>
