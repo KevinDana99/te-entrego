@@ -24,26 +24,8 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   ) => {
     setSelectedMethod(index);
     setShipmentOrder(currentOrder);
-    console.log({
-      click: true,
-      order,
-      customOrder,
-      shipmentOrder,
-      currentOrder,
-    });
   };
 
-  const handleLoadConfig = () => {
-    const operator = config.operator;
-    setSelectedMethod(parseInt(operator));
-    //setShipmentOrder(customOrder);
-    console.log({
-      click: false,
-      order,
-      customOrder,
-      shipmentOrder,
-    });
-  };
   const handleCreateShipment = () => {
     fetch("https://te-entrego.com/teadmin_beta/public/api/generarenviov2", {
       method: "POST",
@@ -129,9 +111,6 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     }
   }, [originLocation, destinationLocation]);
 
-  useEffect(() => {
-    handleLoadConfig();
-  }, [customOrder]);
   return {
     selectedMethod,
     shipmentOrder,
