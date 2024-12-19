@@ -33,10 +33,10 @@ const Shipments = () => {
   );
 
   useEffect(() => {
-    if (currentProps.refetch) {
+    if (currentProps?.refetch) {
       handleRefetch();
     }
-  }, [currentProps]);
+  }, [currentProps?.refetch]);
 
   if (loading) {
     return (
