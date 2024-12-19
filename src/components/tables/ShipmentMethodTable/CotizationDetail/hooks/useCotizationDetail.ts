@@ -83,7 +83,7 @@ const useCotizationDetail = (
   };
 
   const handleLoadConfig = () => {
-    const operator = config.operator;
+    const operator = config.operator ?? "9";
     handleSelectedMethod(parseInt(operator), {
       ...shipmentOrder,
       operador: operator,
@@ -91,7 +91,6 @@ const useCotizationDetail = (
   };
 
   useEffect(() => {
-    console.log({ customOrder });
     handleLoadConfig();
   }, [customOrder]);
   return { loading, data, error, customOrder, handleCreateShipmentOrder };
