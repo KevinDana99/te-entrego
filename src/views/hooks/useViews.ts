@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ShipmentsType } from "../../components/tables/ShipmentTable/types";
 import useFetch from "../../hooks/useFetch";
 import useRouter from "../../routes/context/hook/useRouter";
@@ -51,6 +52,9 @@ const useViews = () => {
     }
   );
 
+  useEffect(() => {
+    console.log("paso por envios");
+  }, []);
   return { path: selectedPath, shipmentData };
 };
 
