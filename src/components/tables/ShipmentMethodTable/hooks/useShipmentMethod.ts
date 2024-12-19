@@ -24,6 +24,12 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   ) => {
     setSelectedMethod(index);
     setShipmentOrder(currentOrder);
+    console.log({
+      click: true,
+      order,
+      customOrder,
+      shipmentOrder,
+    });
   };
 
   const handleLoadConfig = () => {
@@ -31,6 +37,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     setSelectedMethod(parseInt(operator));
     //setShipmentOrder(customOrder);
     console.log({
+      click: false,
       order,
       customOrder,
       shipmentOrder,
