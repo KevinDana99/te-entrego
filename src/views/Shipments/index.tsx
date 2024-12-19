@@ -17,7 +17,7 @@ const Shipments = () => {
   const ACCESS_CLIENT_CODE = config.client_code;
   const ACCESS_PUBLIC_KEY = config.public_key;
   const ACCESS_SECRET_KEY = config.secret_key;
-  const { data, error, loading } = useFetch(
+  const { data, error, loading, handleRefetch } = useFetch(
     "https://te-entrego.com/teadmin_beta/public/api/estados_enviosv2",
     {
       min: `${minDate.getFullYear()}-${
@@ -33,8 +33,8 @@ const Shipments = () => {
   );
 
   useEffect(() => {
-    console.log({ currentProps });
-  }, []);
+    handleRefetch();
+  }, [currentProps.refetch]);
 
   if (loading) {
     return (
