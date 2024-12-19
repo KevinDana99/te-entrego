@@ -15,7 +15,6 @@ const usePolling = ({
   const PUBLIC_KEY = config.platform_public_key;
   const SECRET_KEY = config.platform_secret_key;
   const [data, setData] = useState<[]>([]);
-  const [partialData, setPartialData] = useState<[]>(data);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<unknown>(null);
 
@@ -28,7 +27,7 @@ const usePolling = ({
 
   const origin = selectedShop.url;
 
-  const handleGetInitialData = async () => {
+  const handleDataChanges = async () => {
     try {
       const req = await fetch(origin, {
         method: "GET",
@@ -50,28 +49,9 @@ const usePolling = ({
     }
   };
 
-  const handleDataChanges = async () => {
-    try {
-      const req = await fetch(origin, {
-        method: "GET",
-      });
-      const res = await req.json();
-      setPartialData(res);
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      }
-    }
-  };
-
   useEffect(() => {
-    console.log({ data, partialData });
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    data.length < partialData.length && setData(partialData);
-  }, [partialData]);
-
-  useEffect(() => {
-    handleGetInitialData();
+    console.log({ newGetDataChanges: true });
+    handleDataChanges();
     const interval = setInterval(handleDataChanges, time);
     return () => clearInterval(interval);
   }, []);
