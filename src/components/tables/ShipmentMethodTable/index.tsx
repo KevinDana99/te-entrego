@@ -19,7 +19,7 @@ const ShipmentMethodTable = ({ headers }: ShipmentTableType) => {
 
   const handleRedirection = async () => {
     await handleCreateShipment();
-    navigate("shipments");
+    navigate("shipments", { refetch: true });
   };
 
   if (loading) {

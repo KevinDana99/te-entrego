@@ -18,7 +18,7 @@ const Views = ({
   shopName: ShopNameType;
   store?: StoreType;
 }) => {
-  const { path, shipmentData } = useViews();
+  const { path } = useViews();
   return (
     <Container>
       <Title>{path}</Title>
@@ -30,7 +30,7 @@ const Views = ({
           <Orders shopName={shopName} store={store} />
         </Route>
         <Route path="shipments">
-          <Shipments shipmentData={shipmentData} />
+          <Shipments />
         </Route>
         <Route path="shipment-method">
           <ShipmentMethod />

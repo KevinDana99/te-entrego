@@ -27,11 +27,14 @@ const useFetch = (url: RequestInfo | URL, body?: Record<string, any>) => {
     }
   };
 
+  const handleRefetch = () => {
+    handleRequest();
+  };
   useEffect(() => {
     handleRequest();
   }, []);
 
-  return { error, loading, data };
+  return { error, loading, data, handleRefetch };
 };
 
 export default useFetch;
