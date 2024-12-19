@@ -50,7 +50,6 @@ const usePolling = ({
   };
 
   useEffect(() => {
-    console.log({ newGetDataChanges: true });
     handleDataChanges();
     const interval = setInterval(handleDataChanges, time);
     return () => clearInterval(interval);
