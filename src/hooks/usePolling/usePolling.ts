@@ -65,6 +65,7 @@ const usePolling = ({
   };
 
   useEffect(() => {
+    console.log({ data, partialData });
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     data.length < partialData.length && setData(partialData);
   }, [partialData]);
