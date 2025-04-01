@@ -2,6 +2,7 @@ import { Link } from "../../../routes";
 import { Head, Table, Body, Container, Block, Th, Td } from "../Table/styled";
 import {
   OrderTableType,
+  ShopifyOrdersType,
   WoocomerceOrdersType,
   WoocomerceOrderType,
 } from "./types";
@@ -45,11 +46,55 @@ const OrderTable = ({ headers, data, shopName }: OrderTableType) => {
     return orders;
   };
 
-  const mapShopifyOrders = () => {};
+  const mapShopifyOrders = () => {
+    const shopifyData = data as ShopifyOrdersType;
+    const shopifyDataOrders = shopifyData.orders
+    console.log( {shopifyDataOrders})
+ const orders = shopifyDataOrders.map((item) => {
+const order = {
+  name: item.name,
+  created_at: item.created_at,
+  seller: item.line_items[0].vendor,
+  customer: {
+    first_name: item.customer.first_name,
+    last_name: item.customer.last_name,
+    city: item.customer.default_address.city,
+    country: item.customer.default_address.country,
+    email: item.customer.email,
+    phone: item.customer.phone,
+    postcode: item.customer.default_address.zip,
+    state: item.customer.default_address.province,
+    address_1: item.customer.default_address.address1,
+    address_2: item.customer.default_address.address2,
+},
+total_price: item.total_price,
+sub_total_price: item.subtotal_price,
+financial_status: item.financial_status,
+fulfillment_status: "preparing",
+fulfillable_quantity: item.line_items[0].fulfillable_quantity,
+line_items: [
+  {
+    fulfillable_quantity: item.line_items[0].fulfillable_quantity
+  },
+],
+products: [ {
+  "name": item.line_items[0].title,
+  "weight": 0,
+  "width": 0,
+  "height": 0,
+  "length": 0
+}],
+payment_method: "bacs",
+}
+      return order;
+    })
+    return orders;
+
+  };
 
   const handleSelectedOrders = () => {
     if (shopName === "shopify") {
-      return mapShopifyOrders();
+return mapShopifyOrders();
     }
     if (shopName === "woocommerce") {
       return mapWoocomerceOrders();
@@ -113,7 +158,7 @@ const OrderTable = ({ headers, data, shopName }: OrderTableType) => {
                     </div>
                   </Td>
                   <Td active={active}>
-                    {order?.line_items[0].fulfillable_quantity}
+                    {order?.fulfillable_quantity}
                   </Td>
                   <Td active={active}>
                     <div

@@ -36,7 +36,7 @@ const CotizationDetail = ({
       {cotizationData?.map((element, index) => {
         const active = index % 2 == 0 ? true : false;
         return (
-          <>
+        
             <tr>
               <Td active={active}>
                 <OperatorContainer>
@@ -48,7 +48,7 @@ const CotizationDetail = ({
                   ) : (
                     <img
                       width={150}
-                      src={`https://te-entrego.com/teadmin_beta/public/assets/operadores/${element.logo}`}
+                      src={`https://te-entrego.com/teadminbeta/public/assets/operadores/${element.logo}`}
                     />
                   )}
                 </OperatorContainer>
@@ -113,7 +113,7 @@ const CotizationDetail = ({
                 )}
               </Td>
             </tr>
-          </>
+
         );
       })}
     </Body>

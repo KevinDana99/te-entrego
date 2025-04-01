@@ -8,7 +8,7 @@ import { ConfigType } from "../Config/hooks/useConfig";
 const Shipments = () => {
   const { currentProps } = useRouter();
   const minDate = new Date();
-  minDate.setDate(minDate.getDate() - (14 + 1));
+  minDate.setDate(minDate.getDate() - (34 + 1));
   const maxDate = new Date();
   const config: ConfigType = localStorage.getItem("config")
     ? JSON.parse(localStorage.getItem("config") ?? "")
@@ -18,7 +18,7 @@ const Shipments = () => {
   const ACCESS_PUBLIC_KEY = config.public_key;
   const ACCESS_SECRET_KEY = config.secret_key;
   const { data, error, loading, handleRefetch } = useFetch(
-    "https://te-entrego.com/teadmin_beta/public/api/estados_enviosv2",
+    "https://te-entrego.com/teadminbeta/public/api/estados_enviosv2",
     {
       min: `${minDate.getFullYear()}-${
         minDate.getMonth() + 1

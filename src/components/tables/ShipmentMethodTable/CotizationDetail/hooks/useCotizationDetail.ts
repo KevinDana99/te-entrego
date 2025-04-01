@@ -20,7 +20,7 @@ const useCotizationDetail = (
   const storedConfig = localStorage.getItem("config");
   const config: ConfigType = storedConfig && JSON.parse(storedConfig);
   const { loading, data, error } = useFetch(
-    "https://te-entrego.com/teadmin_beta/public/api/calcular_envio",
+    "https://te-entrego.com/teadminbeta/public/api/calcular_envio",
     {
       ...customOrder,
     }

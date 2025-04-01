@@ -31,7 +31,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     try {
       setLoading(true);
       await fetch(
-        "https://te-entrego.com/teadmin_beta/public/api/generarenviov2",
+        "https://te-entrego.com/teadminbeta/public/api/generarenviov2",
         {
           method: "POST",
           body: JSON.stringify(shipmentOrder),
@@ -48,7 +48,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   };
 
   const handleGetOriginLocation = useFetch(
-    "https://te-entrego.com/teadmin_beta/public/api/ciudades",
+    "https://te-entrego.com/teadminbeta/public/api/ciudades",
     {
       codigocliente: config.client_code,
       accesoapi: config.public_key,
@@ -58,7 +58,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   );
 
   const handleGetDestinationLocation = useFetch(
-    "https://te-entrego.com/teadmin_beta/public/api/ciudades",
+    "https://te-entrego.com/teadminbeta/public/api/ciudades",
     {
       codigocliente: config.client_code,
       accesoapi: config.public_key,
@@ -98,7 +98,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   const { height, length, weight, width } = handleGetSizesProducts();
 
   const handleSetCustomOrder = () => {
-    setCustomOrder({
+setCustomOrder({
       origen: originLocation[0].codigodanelargo,
       destino: destinationLocation[0].codigodanelargo,
       unidades: order.line_items[0].fulfillable_quantity,
@@ -115,6 +115,7 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
       accesoapi: config.public_key,
       llaveseguridad: config.secret_key,
     });
+
   };
   useEffect(() => {
     if (originLocation.length !== 0 && destinationLocation.length !== 0) {
