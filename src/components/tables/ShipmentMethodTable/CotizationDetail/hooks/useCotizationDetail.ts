@@ -13,10 +13,10 @@ const useCotizationDetail = (
     currentOrder: CustomShipmentOrderType
   ) => void
 ) => {
-  const hoy = new Date();
-  const anio = hoy.getFullYear();
-  const mes = String(hoy.getMonth() + 1).padStart(2, "0");
-  const dia = String(hoy.getDate()).padStart(2, "0");
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
   const storedConfig = localStorage.getItem("config");
   const config: ConfigType = storedConfig && JSON.parse(storedConfig);
   const { loading, data, error } = useFetch(
@@ -59,20 +59,21 @@ const useCotizationDetail = (
     unidades,
     vlrdeclarado,
     vlrecaudo,
-    celulard: customer.phone,
+    celulard: customer.phone ?? 2804675399,
     correod: customer.email,
     dird: customer.address_1,
     nombred: `${customer.first_name} ${customer.last_name}`,
     nombrer: customer.first_name,
     apellr: customer.last_name,
-    celularr: customer.phone,
+    celularr: customer.phone ?? 2804675399,
     correor: customer.email,
     dirr: customer.address_1,
     identid: "232323213231",
     identir: "432214343123",
     obs: "No hay observaciones",
     adi: "No hay observaciones",
-    fecha_recogida: `${anio}-${mes}-${dia}`,
+    fecha_recogida: `${year}-${month}-${day}`,
+    tipoacceso: "api",
   };
 
   const handleCreateShipmentOrder = (

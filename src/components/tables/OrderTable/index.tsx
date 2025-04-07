@@ -84,7 +84,7 @@ products: [ {
   "height": 0,
   "length": 0
 }],
-payment_method: "bacs",
+payment_method: "cod",
 }
       return order;
     })

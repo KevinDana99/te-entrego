@@ -26,7 +26,8 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     setSelectedMethod(index);
     setShipmentOrder(currentOrder);
   };
-
+  //"https://te-entrego.com/teadminbeta/public/api/generarenviov2",
+  //https://te-entrego.com/teadmin/public/api/generar_envio
   const handleCreateShipment = async () => {
     try {
       setLoading(true);
@@ -98,7 +99,8 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   const { height, length, weight, width } = handleGetSizesProducts();
 
   const handleSetCustomOrder = () => {
-setCustomOrder({
+    console.log({ order });
+    setCustomOrder({
       origen: originLocation[0].codigodanelargo,
       destino: destinationLocation[0].codigodanelargo,
       unidades: order.line_items[0].fulfillable_quantity,
@@ -115,7 +117,6 @@ setCustomOrder({
       accesoapi: config.public_key,
       llaveseguridad: config.secret_key,
     });
-
   };
   useEffect(() => {
     if (originLocation.length !== 0 && destinationLocation.length !== 0) {

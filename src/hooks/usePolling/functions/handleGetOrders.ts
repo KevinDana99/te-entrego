@@ -10,7 +10,16 @@ const handleGetOrders = ({
   secretKey?: string;
   store?: StoreType;
 }) => {
-  const WOOCOMERCE_URL_GET_ORDERS = `${window.location.origin}/wp-json/woo/v1/orders`;
+  const handleResolveUriOrders = () => {
+    const uri = window.location.href;
+    const splitUri = uri.split("/");
+    const removeParams = splitUri.indexOf("wp-admin");
+    splitUri.splice(removeParams, splitUri.length);
+    const newUrl = splitUri.join("/");
+    return newUrl;
+  };
+  const WOO_ORIGIN = handleResolveUriOrders();
+  const WOOCOMERCE_URL_GET_ORDERS = `${WOO_ORIGIN}/wp-json/woo/v1/orders`;
   const SHOPIFY_URL_GET_ORDERS = `/api/orders?shop=${store?.shop}&accessToken=${store?.accessToken}`;
   const origins = {
     shopify: {
