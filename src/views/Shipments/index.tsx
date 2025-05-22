@@ -4,6 +4,7 @@ import ShipmentTable from "../../components/tables/ShipmentTable";
 import useFetch from "../../hooks/useFetch";
 import useRouter from "../../routes/context/hook/useRouter";
 import { ConfigType } from "../Config/hooks/useConfig";
+import { TE_ENTREGO_API_URL } from "../../config";
 
 const Shipments = () => {
   const { currentProps } = useRouter();
@@ -18,7 +19,7 @@ const Shipments = () => {
   const ACCESS_PUBLIC_KEY = config.public_key;
   const ACCESS_SECRET_KEY = config.secret_key;
   const { data, error, loading, handleRefetch } = useFetch(
-    "https://te-entrego.com/teadminbeta/public/api/estados_enviosv2",
+    `${TE_ENTREGO_API_URL}/estados_enviosv2`,
     {
       min: `${minDate.getFullYear()}-${
         minDate.getMonth() + 1

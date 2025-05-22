@@ -4,6 +4,7 @@ import { WoocomerceOrderType } from "../../../OrderTable/types";
 import { CustomOrderType, CustomShipmentOrderType } from "../../hooks/types";
 import { CotizationResponseItemType } from "../types";
 import { ConfigType } from "../../../../../views/Config/hooks/useConfig";
+import { TE_ENTREGO_API_URL } from "../../../../../config";
 
 const useCotizationDetail = (
   preOrder: WoocomerceOrderType,
@@ -20,7 +21,7 @@ const useCotizationDetail = (
   const storedConfig = localStorage.getItem("config");
   const config: ConfigType = storedConfig && JSON.parse(storedConfig);
   const { loading, data, error } = useFetch(
-    "https://te-entrego.com/teadminbeta/public/api/calcular_envio",
+    `${TE_ENTREGO_API_URL}/calcular_envio`,
     {
       ...customOrder,
     }

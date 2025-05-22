@@ -7,6 +7,7 @@ import {
   CustomShipmentOrderType,
   LocationResponseType,
 } from "./types";
+import { TE_ENTREGO_API_URL } from "../../../../config";
 
 const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
   const storedConfig = localStorage.getItem("config");
@@ -26,21 +27,17 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     setSelectedMethod(index);
     setShipmentOrder(currentOrder);
   };
-  //"https://te-entrego.com/teadminbeta/public/api/generarenviov2",
-  //https://te-entrego.com/teadmin/public/api/generar_envio
+
   const handleCreateShipment = async () => {
     try {
       setLoading(true);
-      await fetch(
-        "https://te-entrego.com/teadminbeta/public/api/generarenviov2",
-        {
-          method: "POST",
-          body: JSON.stringify(shipmentOrder),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await fetch(`${TE_ENTREGO_API_URL}/generarenviov2`, {
+        method: "POST",
+        body: JSON.stringify(shipmentOrder),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } catch (err) {
       setError(err);
     } finally {
@@ -48,18 +45,15 @@ const useShipmentMethod = (currentProps: { order: WoocomerceOrderType }) => {
     }
   };
 
-  const handleGetOriginLocation = useFetch(
-    "https://te-entrego.com/teadminbeta/public/api/ciudades",
-    {
-      codigocliente: config.client_code,
-      accesoapi: config.public_key,
-      llaveseguridad: config.secret_key,
-      paramb: city,
-    }
-  );
+  const handleGetOriginLocation = useFetch(`${TE_ENTREGO_API_URL}/ciudades`, {
+    codigocliente: config.client_code,
+    accesoapi: config.public_key,
+    llaveseguridad: config.secret_key,
+    paramb: city,
+  });
 
   const handleGetDestinationLocation = useFetch(
-    "https://te-entrego.com/teadminbeta/public/api/ciudades",
+    `${TE_ENTREGO_API_URL}/ciudades`,
     {
       codigocliente: config.client_code,
       accesoapi: config.public_key,
